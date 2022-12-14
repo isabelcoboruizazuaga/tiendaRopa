@@ -1,0 +1,229 @@
+/*------------VALORES INICIALES------------*/
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.8;
+
+}
+
+:root {
+    font-size: 65.5%;
+    /*10px*/
+    font-family: 'Changa', sans-serif;
+    /*color: white;*/
+
+
+}
+
+body {
+    font-size: 150%;
+}
+
+h1,
+ul {
+    font-family: 'Pacifico', cursive;
+}
+
+h1 {
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 5px;
+
+    font-size: 200%;
+    /*20px*/
+
+    background-color: var(--secondary-transparency);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/*Creación de la cuadrícula grid del body*/
+.parent {
+    width: 98vw;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1, 5rem, repeat(16, 10rem);
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+
+/*HEADER*/
+header {
+    grid-area: 1 / 1 / 3 / 10;
+    background-color: azure;
+    height: fit-content;
+
+    /*Cuadrícula grid dentro del header*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(2, 5rem);
+}
+
+/*Barra de identificación*/
+header div.identificacion {
+    grid-area: 1 / 1 / 2 / 10;
+    background-color: antiquewhite;
+
+    /*Layout de la barra*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*Logo*/
+header div.identificacion img {
+    width: 5rem;
+    height: 5rem;
+}
+
+/*Enlaces*/
+header div.identificacion .enlaces {
+    padding: 1rem;
+}
+
+header div.identificacion .enlaces a {
+    padding: 1rem;
+}
+
+/*Barra de navegación*/
+header nav {
+    grid-area: 2 / 4 / 3 / 7;
+    background-color: aquamarine;
+
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+
+    margin-right: 4rem;
+    list-style-type: none;
+}
+
+/*PRODUCTO (DETALLE)*/
+.detalle {
+    grid-area: 3 / 3 / 7 / 7;
+    background-color: rgb(120, 188, 144);
+
+
+    display: flex;
+}
+.detalle-images{
+    width: 50%;
+}
+.detalle img {
+    width: 100%;
+}
+.detalle .info{
+    width: 50%;
+}
+
+
+
+/*CATÁLOGO*/
+.item-container {
+    grid-area: 3 / 1 / 7 / 10;
+    background-color: beige;
+    padding-left: 4rem;
+
+    /*Cuadrícula grid dentro de container*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+}
+
+.item-container .item img {
+    width: 15rem;
+}
+
+
+/*INICIO*/
+main {
+    grid-area: 3 / 1 / 7 / 10;
+    background-color: beige;
+
+    /*Cuadrícula grid dentro de main*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(13, 10rem);
+}
+
+main #hero {
+    grid-area: 1 / 1 / 5 / 4;
+    background-color: lavender;
+}
+
+main #eslogan {
+    grid-area: 1 / 4 / 5 / 10;
+    background-color: mediumaquamarine;
+}
+
+main #carrusel {
+    grid-area: 5 / 1 / 9 / 10;
+    background-color: violet;
+}
+
+main #siguenos {
+    grid-area: 9 / 1 / 13 / 10;
+    background-color: turquoise;
+}
+
+main #recibe-ofertas {
+    grid-area: 13 / 1 / 15 / 10;
+    background-color: thistle;
+}
+
+
+
+footer {
+    grid-area: 16 / 1 / 17 / 10;
+    background-color: wheat;
+
+    /*Cuadrícula grid dentro del footer*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(2, 5rem);
+}
+
+/*Estilo de todas las secciones del footer*/
+footer section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer #ayuda {
+    grid-area: 1 / 1 / 4 / 3;
+    background-color: azure;
+}
+
+footer #nosotros {
+    grid-area: 1 / 3 / 4 / 5;
+    background-color: blanchedalmond;
+}
+
+footer #legal {
+    grid-area: 1 / 5 / 4 / 7;
+    background-color: salmon;
+}
+
+footer #metodos-pago {
+    grid-area: 1 / 7 / 4 / 9;
+    background-color: aquamarine;
+}
+
+footer .redes-sociales {
+    grid-area: 1 / 9 / 4 / 10;
+    background-color: cornflowerblue;
+
+    justify-content: space-evenly;
+}

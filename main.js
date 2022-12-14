@@ -84,6 +84,10 @@ function cargarElementos(datos) {
     });
 }
 
+/**
+ * Carga los elementos de control de orden y les asigna los click listeners
+ * @param {JQuery} catalogo 
+ */
 function botonesControl(catalogo) {
     let control = $("<div>")
         .addClass("control")
@@ -102,6 +106,10 @@ function botonesControl(catalogo) {
     botDesc.click(() => { requestAllProducts("", "?sort=desc"); })
 }
 
+/**
+ * Lanza una petición a la api para obtener los datos de un producto dado su id
+ * @param {Number} id 
+ */
 function requestProductoSeleccionado(id) {
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = respuestaProducto;
@@ -109,6 +117,11 @@ function requestProductoSeleccionado(id) {
     httpRequest.open("GET", 'https://fakestoreapi.com/products/'+id);
     httpRequest.send();
 }
+
+/**
+ * Recibe la respuesta del producto buscado por la api y llama al método para mostrarlo
+ * @see mostrarProducto
+ */
 function respuestaProducto() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
@@ -120,6 +133,11 @@ function respuestaProducto() {
     }
 }
 
+/**
+ * Coloca un producto en el html
+ * @param {JSON} item 
+ * @see respuestaProducto
+ */
 function mostrarProducto(item){
     let main = $("main");
     main.empty();
@@ -163,7 +181,4 @@ function mostrarProducto(item){
 
     let add = $('<button> Añadir al carrito </button>')
     .appendTo(info);
-}
-function articulosMujer() {
-    requestAllProducts("/category/women's clothing");
 }

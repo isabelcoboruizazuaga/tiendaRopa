@@ -44,7 +44,7 @@ a {
 
 
 
-/*Creación de la cuadrícula grid del body*/
+/*------------BODY------------*/
 body {
     width: 98vw;
     display: grid;
@@ -56,58 +56,7 @@ body {
 
 
 
-
-/*MAIN*/
-main {
-    grid-area: 2 / 1 / 3/ 10;
-
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
-}
-
-/*INICIO*/
-main .inicio {
-    grid-area: 1/1/1/1;
-
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(14, fit-content(5rem));
-    grid-column-gap: 0px;
-    grid-row-gap: 5px;
-}
-
-main .inicio #hero {
-    grid-area: 1/1/4/4;
-
-    background-color: rgb(154, 73, 73);
-}
-
-main .inicio #eslogan {
-    grid-area: 1/4/4/10;
-
-    background-color: rgb(104, 187, 93);
-}
-
-main .inicio #carrusel {
-    grid-area: 4/1/8/10;
-
-    background-color: rgb(109, 93, 187);
-}
-
-main .inicio #siguenos {
-    grid-area: 8/1/12/10;
-
-    background-color: rgb(163, 93, 187);
-}
-
-main .inicio #recibe-ofertas {
-    grid-area: 12/1/14/10;
-
-    background-color: rgb(93, 170, 187);
-}
-
-/*HEADER*/
+/*------------HEADER------------*/
 header {
     grid-area: 1 / 1 / 2 / 10;
     background-color: azure;
@@ -160,6 +109,93 @@ header nav ul {
     list-style-type: none;
 }
 
+
+
+
+/*------------MAIN------------*/
+main {
+    grid-area: 2 / 1 / 3/ 10;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+
+/*------------INICIO------------*/
+main .inicio {
+    grid-area: 1/1/2/2;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(14, fit-content(5rem));
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+
+main .inicio #hero {
+    grid-area: 1/1/4/4;
+
+    background-color: rgb(154, 73, 73);
+}
+
+main .inicio #eslogan {
+    grid-area: 1/4/4/10;
+
+    background-color: rgb(104, 187, 93);
+}
+
+main .inicio #carrusel {
+    grid-area: 4/1/8/10;
+
+    background-color: rgb(109, 93, 187);
+}
+
+main .inicio #siguenos {
+    grid-area: 8/1/12/10;
+
+    background-color: rgb(163, 93, 187);
+}
+
+main .inicio #recibe-ofertas {
+    grid-area: 12/1/14/10;
+
+    background-color: rgb(93, 170, 187);
+}
+
+/*CATÁLOGO*/
+main .catalogo{    
+    grid-area: 1/1/2/2;
+    
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2,fit-content(100%));
+    grid-row-gap: 0.5rem;
+}
+
+/*Botones de control de orden*/
+main .catalogo .control{
+    grid-area: 1 / 1 / 2 / 2; 
+}
+
+main .catalogo .item-container {
+    grid-area: 2 / 1 / 2 / 2;
+    background-color: beige;
+    padding-left: 4rem;
+
+    /*Cuadrícula grid dentro de container*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+}
+
+.item-container .item img {
+    width: 15rem;
+}
+
+
+
 /*PRODUCTO (DETALLE)*/
 /*.detalle {
     grid-area: 3 / 3 / 7 / 7;
@@ -178,64 +214,6 @@ header nav ul {
     width: 50%;
 }
 
-
-
-/*CATÁLOGO*/
-/*
-.item-container {
-    grid-area: 3 / 1 / 7 / 10;
-    background-color: beige;
-    padding-left: 4rem;
-
-    /*Cuadrícula grid dentro de container*/
-/* display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    grid-column-gap: 4rem;
-    grid-row-gap: 2rem;
-}
-
-.item-container .item img {
-    width: 15rem;
-}
-
-
-/*INICIO*/
-/*main {
-    grid-area: 3 / 1 / 7 / 10;
-    background-color: beige;
-
-    /*Cuadrícula grid dentro de main*/
-/*display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(13, 10rem);
-}
-
-main #hero {
-    grid-area: 1 / 1 / 5 / 4;
-    background-color: lavender;
-}
-
-main #eslogan {
-    grid-area: 1 / 4 / 5 / 10;
-    background-color: mediumaquamarine;
-}
-
-main #carrusel {
-    grid-area: 5 / 1 / 9 / 10;
-    background-color: violet;
-}
-
-main #siguenos {
-    grid-area: 9 / 1 / 13 / 10;
-    background-color: turquoise;
-}
-
-main #recibe-ofertas {
-    grid-area: 13 / 1 / 15 / 10;
-    background-color: thistle;
-}
-*/
 
 
 /*FOOTER*/

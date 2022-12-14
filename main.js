@@ -1,16 +1,13 @@
 window.onload = () => {
-    requestAllProducts();
-
 
     //Click events para las categorías
-    $(".art-mujer").click( () =>{requestAllProducts("/category/women's clothing");})
-    $(".art-hombre").click( () =>{requestAllProducts("/category/men's clothing");})
-    $(".art-jewele").click( () =>{requestAllProducts("/category/jewelery");})
+    $(".art-all").click(() => { requestAllProducts(); })
+    $(".art-mujer").click(() => { requestAllProducts("/category/women's clothing"); })
+    $(".art-hombre").click(() => { requestAllProducts("/category/men's clothing"); })
+    $(".art-jewele").click(() => { requestAllProducts("/category/jewelery"); })
 
     //Click events para el orden
-    $(".descendente").click( () =>{requestAllProducts("","?sort=desc");})
-    $(".ascendente").click( () =>{requestAllProducts("","?sort=asc");})
-    
+
 }
 
 var lastRequest;
@@ -20,16 +17,16 @@ var lastRequest;
  * @param  {String} category Categoría a buscar, puede estar vacío
  * @param  {String} sort Parámetros de orden, puede estar vacío
  */
-function requestAllProducts(category = "",sort="") {
+function requestAllProducts(category = "", sort = "") {
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = tratarRespuesta;
 
     //Si se ordena se coge la última petición y se añade el orden, si no se hace la nueva petición
-    sort? newRequest=  lastRequest + category +sort : newRequest= "https://fakestoreapi.com/products" + category
-    
+    sort ? newRequest = lastRequest + category + sort : newRequest = "https://fakestoreapi.com/products" + category
+
     httpRequest.open("GET", newRequest);///category/men's clothing
     httpRequest.send();
-    lastRequest=newRequest;
+    lastRequest = newRequest;
 }
 
 /**
@@ -52,76 +49,120 @@ function tratarRespuesta() {
  * @param {JSON} datos 
  * @see tratarRespuesta
  */
-function cargarElementos(datos) {
-    var container = $(".item-container");
+function cargarElementos(datos) {    
+    let main = $("main");
+    main.empty();
 
-    //Se vacía por si hay algo ya
-    console.log("alo?")
-    container.empty();
+    /*Sección*/
+    let catalogo = $("<section>")
+        .addClass("catalogo")
+        .appendTo(main);
+
+    /*Botones de control de orden*/
+    botonesControl(catalogo);
+
+    /*Contenedor de productos*/
+    let container = $("<div>")
+        .addClass("item-container")
+        .appendTo(catalogo);
 
     //Se cargan los artículos
     datos.forEach(item => {
-        let nombre = item.title;
-        let imagen = item.image;
-        let precio = item.price;
-
         let divItem = $('<div>')
             .addClass('item')
             .appendTo(container);
 
         let img = $('<img>')
-            .attr("src", imagen)
+            .attr("src", item.image)
             .appendTo(divItem);
-        let nomb = $('<h3>' + nombre + '</h3>')
+        let nomb = $('<h3>' + item.title + '</h3>')
             .appendTo(divItem);
-        let preci = $('<p>' + precio + '€</p>')
-            .appendTo(divItem);      
-            
-            divItem.click(function (event) { productoSeleccionado(event, item.id) });
+        let preci = $('<p>' + item.price + '€</p>')
+            .appendTo(divItem);
+
+        divItem.click(function (event) { requestProductoSeleccionado(item.id);});
     });
 }
 
-function productoSeleccionado(e,id){
-     console.log(id);
-     $(".item-container").empty;
-     
-     var container = $(".detalle");
+function botonesControl(catalogo) {
+    let control = $("<div>")
+        .addClass("control")
+        .appendTo(catalogo);
 
-     let images=$("<div>")
-     .addClass("detalle-images")
-     .appendTo(container);
+    let botAsc = $("<button> Ascendente </button>")
+        .addClass("ascendente")
+        .appendTo(control);
 
-     let img = $('<img>')
-     .attr("src", "https://i.blogs.es/b880f2/pexels-pixabay-414102/200_200.jpg")
-     .appendTo(images);
+    let botDesc = $("<button>Descendente </button>")
+        .addClass("descendente")
+        .appendTo(control);
 
-     let info=$("<div>")
-     .addClass("info")
-     .appendTo(container);
-     
-     let nomb = $('<h1>' + "nombreProducto" + '</h1>')
-     .appendTo(info);
-     let preci = $('<h2>' + "00.00€" + '</h2>')
-     .appendTo(info);
-     let desc = $('<p>' + "blablablablabl" + '</p>')
-     .appendTo(info);
+        
+    botAsc.click(() => { requestAllProducts("", "?sort=asc"); })
+    botDesc.click(() => { requestAllProducts("", "?sort=desc"); })
+}
 
-     var arr = [
-        {val : "xs", text: 'XS'},
-        {val : "s", text: 'S'},
-        {val : "m", text: 'M'},
-        {val : "l", text: 'L'},
-        {val : "xl", text: 'XL'}
-      ];
-      
-      var selec = $('<select>').appendTo('info');
-      $(arr).each(function() {
-       selec.append($("<option>").attr('value',this.val).text(this.text));
-      });
+function requestProductoSeleccionado(id) {
+    httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = respuestaProducto;
 
-      let add=$('<button> Añadir al carrito </button>');
-     
+    httpRequest.open("GET", 'https://fakestoreapi.com/products/'+id);
+    httpRequest.send();
+}
+function respuestaProducto() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            var datos = JSON.parse(httpRequest.responseText);
+            mostrarProducto(datos);
+        } else {
+            alert("There was a problem with the request.");
+        }
+    }
+}
 
+function mostrarProducto(item){
+    let main = $("main");
+    main.empty();
+
+    /*Sección*/
+    let container = $("<section>")
+        .addClass("detalle")
+        .appendTo(main);
+
+    let images = $("<div>")
+        .addClass("detalle-images")
+        .appendTo(container);
+
+    let img = $('<img>')
+        .attr("src", item.image)
+        .appendTo(images);
+
+    let info = $("<div>")
+        .addClass("info")
+        .appendTo(container);
+
+    let nomb = $('<h1>' + item.title + '</h1>')
+        .appendTo(info);
+    let preci = $('<h2>' + item.price + '</h2>')
+        .appendTo(info);
+    let desc = $('<p>' + item.description + '</p>')
+        .appendTo(info);
+
+    var arr = [
+        { val: "xs", text: 'XS' },
+        { val: "s", text: 'S' },
+        { val: "m", text: 'M' },
+        { val: "l", text: 'L' },
+        { val: "xl", text: 'XL' }
+    ];
+
+    var selec = $('<select>').appendTo(info);
+    $(arr).each(function () {
+        selec.append($("<option>").attr('value', this.val).text(this.text));
+    });
+
+    let add = $('<button> Añadir al carrito </button>')
+    .appendTo(info);
 }
 function articulosMujer() {
     requestAllProducts("/category/women's clothing");

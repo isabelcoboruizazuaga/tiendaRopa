@@ -59,7 +59,7 @@ function mostrarProducto(item){
     let desc = $('<p>' + item.description + '</p>')
         .appendTo(info);
 
-    var arr = [
+    let arr = [
         { val: "xs", text: 'XS' },
         { val: "s", text: 'S' },
         { val: "m", text: 'M' },
@@ -67,7 +67,7 @@ function mostrarProducto(item){
         { val: "xl", text: 'XL' }
     ];
 
-    var selec = $('<select>').appendTo(info);
+    let selec = $('<select>').appendTo(info);
     $(arr).each(function () {
         selec.append($("<option>").attr('value', this.val).text(this.text));
     });

@@ -6,179 +6,141 @@ window.onload = () => {
     $(".art-hombre").click(() => { requestAllProducts("/category/men's clothing"); })
     $(".art-jewele").click(() => { requestAllProducts("/category/jewelery"); })
 
-    //Click events para el orden
-
+    //Click event del carrito
+    $("#carro").click(() => { showCart(); })
 }
 
-var lastRequest;
-
-/**
- * Realiza la llamada a la api para la categoría indicada
- * @param  {String} category Categoría a buscar, puede estar vacío
- * @param  {String} sort Parámetros de orden, puede estar vacío
- */
-function requestAllProducts(category = "", sort = "") {
-    httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = tratarRespuesta;
-
-    //Si se ordena se coge la última petición y se añade el orden, si no se hace la nueva petición
-    sort ? newRequest = lastRequest + category + sort : newRequest = "https://fakestoreapi.com/products" + category
-
-    httpRequest.open("GET", newRequest);///category/men's clothing
-    httpRequest.send();
-    lastRequest = newRequest;
-}
-
-/**
- * Gestiona la respuesta de la api.
- * @see cargarElementos
- */
-function tratarRespuesta() {
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
-            var datos = JSON.parse(httpRequest.responseText);
-            cargarElementos(datos);
-        } else {
-            alert("There was a problem with the request.");
-        }
-    }
-}
-
-/**
- * Carga los elementos de un JSON dado en el HTML
- * @param {JSON} datos 
- * @see tratarRespuesta
- */
-function cargarElementos(datos) {    
+function showCart() {
+    console.log("aaaaa");
     let main = $("main");
     main.empty();
 
     /*Sección*/
-    let catalogo = $("<section>")
-        .addClass("catalogo")
+    let carrito = $("<section>")
+        .addClass("carrito")
         .appendTo(main);
 
-    /*Botones de control de orden*/
-    botonesControl(catalogo);
+
+    let title = $("<h1> Cesta </h1>")
+        .addClass("title")
+        .appendTo(carrito);
 
     /*Contenedor de productos*/
     let container = $("<div>")
-        .addClass("item-container")
-        .appendTo(catalogo);
+        .addClass("container-items")
+        .appendTo(carrito);
 
-    //Se cargan los artículos
-    datos.forEach(item => {
-        let divItem = $('<div>')
-            .addClass('item')
+    //Producto
+    showProduct(container);
+
+    //Resumen de pedido
+    showResumen(carrito);
+
+
+
+}
+
+function showProduct(container) {
+    for (let j = 0; j < 10; j++) {
+
+        let divItem = $("<div>")
+            .addClass("item-c")
             .appendTo(container);
 
         let img = $('<img>')
-            .attr("src", item.image)
-            .appendTo(divItem);
-        let nomb = $('<h3>' + item.title + '</h3>')
-            .appendTo(divItem);
-        let preci = $('<p>' + item.price + '€</p>')
+            .attr("src", "imgs/prueba.jpg")
             .appendTo(divItem);
 
-        divItem.click(function (event) { requestProductoSeleccionado(item.id);});
-    });
-}
+        let datos = $("<div>")
+            .addClass("datos")
+            .appendTo(divItem);
 
-/**
- * Carga los elementos de control de orden y les asigna los click listeners
- * @param {JQuery} catalogo 
- */
-function botonesControl(catalogo) {
-    let control = $("<div>")
-        .addClass("control")
-        .appendTo(catalogo);
+        let nombre = $("<h2> Nombre producto </h2>")
+            .appendTo(datos);
+        let descrip = $("<p> Descripcion producto </p>")
+            .appendTo(datos);
 
-    let botAsc = $("<button> Ascendente </button>")
-        .addClass("ascendente")
-        .appendTo(control);
 
-    let botDesc = $("<button>Descendente </button>")
-        .addClass("descendente")
-        .appendTo(control);
+        let adicional = $("<div>")
+            .addClass("adicional")
+            .appendTo(datos);
 
-        
-    botAsc.click(() => { requestAllProducts("", "?sort=asc"); })
-    botDesc.click(() => { requestAllProducts("", "?sort=desc"); })
-}
+        let arr = [
+            { val: "xs", text: 'XS' },
+            { val: "s", text: 'S' },
+            { val: "m", text: 'M' },
+            { val: "l", text: 'L' },
+            { val: "xl", text: 'XL' }
+        ];
 
-/**
- * Lanza una petición a la api para obtener los datos de un producto dado su id
- * @param {Number} id 
- */
-function requestProductoSeleccionado(id) {
-    httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = respuestaProducto;
+        let tall = $("<p> Talla: </p>")
+            .appendTo(adicional);
+        //Select de tallas
+        let tallas = $('<select>')
+            .addClass("selectTallas")
+            .appendTo(adicional);
+        $(arr).each(function () {
+            tallas.append($("<option>").attr('value', this.val).text(this.text));
+        });
+        //Se selecciona por defecto la talla elegida
+        $(".selectTallas > option[value=m]").attr("selected", true);
 
-    httpRequest.open("GET", 'https://fakestoreapi.com/products/'+id);
-    httpRequest.send();
-}
-
-/**
- * Recibe la respuesta del producto buscado por la api y llama al método para mostrarlo
- * @see mostrarProducto
- */
-function respuestaProducto() {
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
-            var datos = JSON.parse(httpRequest.responseText);
-            mostrarProducto(datos);
-        } else {
-            alert("There was a problem with the request.");
+        let cant = $("<p> Cantidad: </p>")
+            .appendTo(adicional);
+        //Select de cantidad
+        let cantidad = $('<select>')
+            .addClass("selectCantidad")
+            .appendTo(adicional);
+        for (i = 1; i <= 10; i++) {
+            cantidad.append($('<option></option>').val(i).html(i))
         }
+        //Se selecciona el número de objetos
+        $(".selectCantidad > option[value=2]").attr("selected", true);
+
+
+        let borrar = $("<i>")
+            .addClass("fa-solid fa-trash-can")
+            .appendTo(adicional);
+
+        let precio = $("<h2>99.99€</h2>")
+            .appendTo(divItem);
     }
 }
 
-/**
- * Coloca un producto en el html
- * @param {JSON} item 
- * @see respuestaProducto
- */
-function mostrarProducto(item){
-    let main = $("main");
-    main.empty();
+function showResumen(carrito) {
+    let resumen = $("<div>")
+        .addClass("resumen")
+        .appendTo(carrito);
 
-    /*Sección*/
-    let container = $("<section>")
-        .addClass("detalle")
-        .appendTo(main);
+    let title = $("<h1> Resumen </h1>")
+        .appendTo(resumen);
 
-    let images = $("<div>")
-        .addClass("detalle-images")
-        .appendTo(container);
+    let subtoDiv = $("<div>")
+        .addClass("subtotal")
+        .appendTo(resumen);
+    let sub = $("<p> Subtotal </p>")
+        .appendTo(subtoDiv);
+    let subto = $("<p> 999.999€ </p>")
+        .appendTo(subtoDiv);
 
-    let img = $('<img>')
-        .attr("src", item.image)
-        .appendTo(images);
+    let envioDiv = $("<div>")
+        .addClass("envio")
+        .appendTo(resumen);
+    let en = $("<p> Gastos de envío y gestión </p>")
+        .appendTo(envioDiv);
+    let env = $("<p> 999.999€ </p>")
+        .appendTo(envioDiv);
 
-    let info = $("<div>")
-        .addClass("info")
-        .appendTo(container);
 
-    let nomb = $('<h1>' + item.title + '</h1>')
-        .appendTo(info);
-    let preci = $('<h2>' + item.price + '</h2>')
-        .appendTo(info);
-    let desc = $('<p>' + item.description + '</p>')
-        .appendTo(info);
+    let totDiv = $("<div>")
+        .addClass("total")
+        .appendTo(resumen);
+    let tot = $("<p> Total </p>")
+        .appendTo(totDiv);
+    let total = $("<p> 999.999€ </p>")
+        .appendTo(totDiv);
 
-    var arr = [
-        { val: "xs", text: 'XS' },
-        { val: "s", text: 'S' },
-        { val: "m", text: 'M' },
-        { val: "l", text: 'L' },
-        { val: "xl", text: 'XL' }
-    ];
+    let pag = $("<button> Pasar por caja </button>")
+        .appendTo(resumen);
 
-    var selec = $('<select>').appendTo(info);
-    $(arr).each(function () {
-        selec.append($("<option>").attr('value', this.val).text(this.text));
-    });
-
-    let add = $('<button> Añadir al carrito </button>')
-    .appendTo(info);
 }

@@ -1,6 +1,6 @@
 /*------------VALORES INICIALES------------*/
-::before,
-::after {
+::before *,
+::after * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -45,18 +45,71 @@ a {
 
 
 /*Creación de la cuadrícula grid del body*/
-.parent {
+body {
     width: 98vw;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: 1, 5rem, repeat(16, 10rem);
+    grid-template-rows: 10rem fit-content(100%) fit-content(10rem);
     grid-column-gap: 0px;
     grid-row-gap: 5px;
 }
 
+
+
+
+/*MAIN*/
+main {
+    grid-area: 2 / 1 / 3/ 10;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+
+/*INICIO*/
+main .inicio {
+    grid-area: 1/1/1/1;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(14, fit-content(5rem));
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+
+main .inicio #hero {
+    grid-area: 1/1/4/4;
+
+    background-color: rgb(154, 73, 73);
+}
+
+main .inicio #eslogan {
+    grid-area: 1/4/4/10;
+
+    background-color: rgb(104, 187, 93);
+}
+
+main .inicio #carrusel {
+    grid-area: 4/1/8/10;
+
+    background-color: rgb(109, 93, 187);
+}
+
+main .inicio #siguenos {
+    grid-area: 8/1/12/10;
+
+    background-color: rgb(163, 93, 187);
+}
+
+main .inicio #recibe-ofertas {
+    grid-area: 12/1/14/10;
+
+    background-color: rgb(93, 170, 187);
+}
+
 /*HEADER*/
 header {
-    grid-area: 1 / 1 / 3 / 10;
+    grid-area: 1 / 1 / 2 / 10;
     background-color: azure;
     height: fit-content;
 
@@ -108,7 +161,7 @@ header nav ul {
 }
 
 /*PRODUCTO (DETALLE)*/
-.detalle {
+/*.detalle {
     grid-area: 3 / 3 / 7 / 7;
     background-color: rgb(120, 188, 144);
 
@@ -128,13 +181,14 @@ header nav ul {
 
 
 /*CATÁLOGO*/
+/*
 .item-container {
     grid-area: 3 / 1 / 7 / 10;
     background-color: beige;
     padding-left: 4rem;
 
     /*Cuadrícula grid dentro de container*/
-    display: grid;
+/* display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-column-gap: 4rem;
@@ -147,12 +201,12 @@ header nav ul {
 
 
 /*INICIO*/
-main {
+/*main {
     grid-area: 3 / 1 / 7 / 10;
     background-color: beige;
 
     /*Cuadrícula grid dentro de main*/
-    display: grid;
+/*display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(13, 10rem);
 }
@@ -181,11 +235,12 @@ main #recibe-ofertas {
     grid-area: 13 / 1 / 15 / 10;
     background-color: thistle;
 }
+*/
 
 
-
+/*FOOTER*/
 footer {
-    grid-area: 16 / 1 / 17 / 10;
+    grid-area: 3 / 1 / 4 / 10;
     background-color: wheat;
 
     /*Cuadrícula grid dentro del footer*/

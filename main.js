@@ -84,6 +84,7 @@ function cargarElementos(datos) {
 function productoSeleccionado(e,id){
      console.log(id);
      $(".item-container").empty;
+     
      var container = $(".detalle");
 
      let images=$("<div>")

@@ -24,18 +24,3 @@ class FilaCarrito{
         return this.articulo;
     }
 }
-    constructor(id,nombre, descripcion, imagen,precio){
-        this.id=id;
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.imagen=imagen;
-        this.precio=precio;
-    }
-
-    setTalla(talla){
-        this.talla=talla;
-    }
-
-    getTalla(){
-        return this.talla;
-    } */

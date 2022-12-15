@@ -28,9 +28,6 @@ function showCart() {
 
     //Resumen de pedido
     showResumen(carrito);
-
-
-
 }
 
 /**
@@ -38,23 +35,26 @@ function showCart() {
  * @param {JQuery} container 
  */
 function showProduct(container) {
-    for (let j = 0; j < 10; j++) {
+    //Se obtiene el carrito
+    let carro= new CarritoCompra(JSON.parse(localStorage.getItem('carrito')));
+    let carritoArr= carro.getCarrito();
 
+    carritoArr.forEach(fila => {
         let divItem = $("<div>")
             .addClass("item-c")
             .appendTo(container);
 
         let img = $('<img>')
-            .attr("src", "imgs/prueba.jpg")
+            .attr("src", fila.articulo.image)
             .appendTo(divItem);
 
         let datos = $("<div>")
             .addClass("datos")
             .appendTo(divItem);
 
-        let nombre = $("<h2> Nombre producto </h2>")
+        let nombre = $("<h2>" +fila.articulo.title+" </h2>")
             .appendTo(datos);
-        let descrip = $("<p> Descripcion producto </p>")
+        let descrip = $("<p> " +fila.articulo.description+" </p>")
             .appendTo(datos);
 
 
@@ -63,11 +63,11 @@ function showProduct(container) {
             .appendTo(datos);
 
         let arr = [
-            { val: "xs", text: 'XS' },
-            { val: "s", text: 'S' },
-            { val: "m", text: 'M' },
-            { val: "l", text: 'L' },
-            { val: "xl", text: 'XL' }
+            { val: "XS", text: 'XS' },
+            { val: "S", text: 'S' },
+            { val: "M", text: 'M' },
+            { val: "L", text: 'L' },
+            { val: "XL", text: 'XL' }
         ];
 
         let tall = $("<p> Talla: </p>")
@@ -75,24 +75,26 @@ function showProduct(container) {
         //Select de tallas
         let tallas = $('<select>')
             .addClass("selectTallas")
+            .attr("id", fila.articulo.id+fila.talla)
             .appendTo(adicional);
         $(arr).each(function () {
             tallas.append($("<option>").attr('value', this.val).text(this.text));
         });
         //Se selecciona por defecto la talla elegida
-        $(".selectTallas > option[value=m]").attr("selected", true);
+        $(".selectTallas#"+fila.articulo.id+fila.talla+" > option[value='"+fila.talla+"']").attr("selected", true);
 
         let cant = $("<p> Cantidad: </p>")
             .appendTo(adicional);
         //Select de cantidad
         let cantidad = $('<select>')
             .addClass("selectCantidad")
+            .attr("id", fila.articulo.id+fila.talla)
             .appendTo(adicional);
         for (i = 1; i <= 10; i++) {
             cantidad.append($('<option></option>').val(i).html(i))
         }
         //Se selecciona el número de objetos
-        $(".selectCantidad > option[value=2]").attr("selected", true);
+        $(".selectCantidad#"+fila.articulo.id+fila.talla+" > option[value='"+fila.cantidad+"']").attr("selected", true);
 
 
         let borrar = $("<i>")
@@ -101,7 +103,9 @@ function showProduct(container) {
 
         let precio = $("<h2>99.99€</h2>")
             .appendTo(divItem);
-    }
+    });
+
+
 }
 
 /**

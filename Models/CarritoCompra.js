@@ -8,7 +8,9 @@ class CarritoCompra {
      * @returns {Array} array del carrito
      */
     getCarrito() {
-        return this.carrito;
+        //Se invierte para obtener los últimos productos añadidos antes
+        let carrito =  this.carrito.slice().reverse();
+        return carrito;
     }
 
     /**
@@ -22,8 +24,9 @@ class CarritoCompra {
 
         let id = art.id;
         //Se comprueba si ya está el artículo
-        for (let i = 0; i < this.carrito.length; i++) {
-            const filaCarrito = this.carrito[i];
+        for (let i = 0; i < this.carrito.length; i++) {            
+            const fil = this.carrito[i];
+            let filaCarrito= new FilaCarrito(fil.articulo,fil.cantidad,fil.talla);
 
             let tal = filaCarrito.getTalla();
             let articulo = filaCarrito.getArticulo();
@@ -49,8 +52,9 @@ class CarritoCompra {
      */
     deleteFromCart(id, talla) {
         //Se recorre el carrito
-        for (let i = 0; i < this.carrito.length; i++) {
-            const filaCarrito = this.carrito[i];
+        for (let i = 0; i < this.carrito.length; i++) {            
+            const fil = this.carrito[i];
+            let filaCarrito= new FilaCarrito(fil.articulo,fil.cantidad,fil.talla);
 
             let tal = filaCarrito.getTalla();
             let articulo = filaCarrito.getArticulo();
@@ -66,7 +70,8 @@ class CarritoCompra {
     isArticulo(id, talla) {
         //Se recorre el carrito
         for (let i = 0; i < this.carrito.length; i++) {
-            const filaCarrito = this.carrito[i];
+            const fil = this.carrito[i];
+            let filaCarrito= new FilaCarrito(fil.articulo,fil.cantidad,fil.talla);
 
             let tal = filaCarrito.getTalla();
             let articulo = filaCarrito.getArticulo();
@@ -86,7 +91,8 @@ class CarritoCompra {
      * @param {String} newTalla nueva talla deseada
      */
     changeTalla(id, oldTalla, newTalla) {
-        let newCarrito=this.carrito.map(fila=>{
+        let newCarrito=this.carrito.map(fil=>{
+            let fila= new FilaCarrito(fil.articulo,fil.cantidad,fil.talla);
             //Si la fila es la que buscamos (el articulo es el id y la talla es la antigua)
             if(fila.articulo.id ==id && fila.talla==oldTalla){
                 //Devolvemos la nueva fila con la talla ya cambiada
@@ -108,7 +114,8 @@ class CarritoCompra {
      * @param {Number} newCantidad nueva cantidad deseada
      */
     changeCantidad(id,talla,newCantidad){
-        let newCarrito=this.carrito.map(fila=>{
+        let newCarrito=this.carrito.map(fil=>{
+            let fila= new FilaCarrito(fil.articulo,fil.cantidad,fil.talla);
             //Si la fila es la que buscamos (el articulo es el id y la talla corresponde)
             if(fila.articulo.id ==id && fila.talla==talla){
                 //Devolvemos la nueva fila con la cantidad ya cambiada

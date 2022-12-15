@@ -67,11 +67,22 @@ function mostrarProducto(item){
         { val: "xl", text: 'XL' }
     ];
 
-    let selec = $('<select>').appendTo(info);
+    let selec = $('<select>')
+    .addClass("tallaProduct")
+    .appendTo(info);
     $(arr).each(function () {
         selec.append($("<option>").attr('value', this.val).text(this.text));
     });
 
     let add = $('<button> Añadir al carrito </button>')
+    .click(function (){
+        //Se añade el artículo al carrito
+        let talla=$( ".tallaProduct option:selected" ).text();
+        carrito.addToCart(item,talla,1);
+
+        //Se añade a local storage
+        localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
+
+    })
     .appendTo(info);
 }

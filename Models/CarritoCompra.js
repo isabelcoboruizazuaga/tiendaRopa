@@ -194,4 +194,27 @@ class CarritoCompra {
         //Se sustituye el array por el nuevo
         this.carrito = newCarrito;
     }
+
+    /**
+     * Devuelve el subtotal del pedido
+     * @returns {String} subtotal
+     */
+    calculaSubtotal(){
+        let subtotal=0;
+
+         //Se recorre el carrito y se añade el precio al subtotal
+         //Se recorre el carrito
+        for (let i = 0; i < this.carrito.length; i++) {
+            const fila = this.carrito[i];            
+
+            let precioArt= fila.articulo.price * fila.cantidad;
+            subtotal=subtotal+precioArt;  
+        }
+
+        return subtotal;
+    }
+
+    calculaTotal(){
+        return this.calculaSubtotal()+2.99;
+    }
 }

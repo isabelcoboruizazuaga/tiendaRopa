@@ -36,8 +36,11 @@ function showCart() {
  */
 function showProduct(container) {
     //Se obtiene el carrito
-    let carro= new CarritoCompra(JSON.parse(localStorage.getItem('carrito')));
-    let carritoArr= carro.getCarrito();
+    let carro = new CarritoCompra(JSON.parse(localStorage.getItem('carrito')));
+    console.log(carro);
+    let carritoArr = carro.getCarrito();
+    console.log("aaaaaaa");
+    console.log(carritoArr);
 
     carritoArr.forEach(fila => {
         let divItem = $("<div>")
@@ -52,9 +55,9 @@ function showProduct(container) {
             .addClass("datos")
             .appendTo(divItem);
 
-        let nombre = $("<h2>" +fila.articulo.title+" </h2>")
+        let nombre = $("<h2>" + fila.articulo.title + " </h2>")
             .appendTo(datos);
-        let descrip = $("<p> " +fila.articulo.description+" </p>")
+        let descrip = $("<p> " + fila.articulo.description + " </p>")
             .appendTo(datos);
 
 
@@ -62,39 +65,9 @@ function showProduct(container) {
             .addClass("adicional")
             .appendTo(datos);
 
-        let arr = [
-            { val: "XS", text: 'XS' },
-            { val: "S", text: 'S' },
-            { val: "M", text: 'M' },
-            { val: "L", text: 'L' },
-            { val: "XL", text: 'XL' }
-        ];
-
-        let tall = $("<p> Talla: </p>")
-            .appendTo(adicional);
-        //Select de tallas
-        let tallas = $('<select>')
-            .addClass("selectTallas")
-            .attr("id", fila.articulo.id+fila.talla)
-            .appendTo(adicional);
-        $(arr).each(function () {
-            tallas.append($("<option>").attr('value', this.val).text(this.text));
-        });
-        //Se selecciona por defecto la talla elegida
-        $(".selectTallas#"+fila.articulo.id+fila.talla+" > option[value='"+fila.talla+"']").attr("selected", true);
-
-        let cant = $("<p> Cantidad: </p>")
-            .appendTo(adicional);
-        //Select de cantidad
-        let cantidad = $('<select>')
-            .addClass("selectCantidad")
-            .attr("id", fila.articulo.id+fila.talla)
-            .appendTo(adicional);
-        for (i = 1; i <= 10; i++) {
-            cantidad.append($('<option></option>').val(i).html(i))
-        }
-        //Se selecciona el número de objetos
-        $(".selectCantidad#"+fila.articulo.id+fila.talla+" > option[value='"+fila.cantidad+"']").attr("selected", true);
+        //Selects de tallas y cantidad
+        selectTallas(adicional,fila);
+        selectCantidad(adicional,fila);
 
 
         let borrar = $("<i>")
@@ -106,6 +79,69 @@ function showProduct(container) {
     });
 
 
+}
+
+function selectCantidad(adicional,fila) {
+    //Etiqueta
+    let cant = $("<p> Cantidad: </p>")
+        .appendTo(adicional);
+
+    //Select 
+    let cantidad = $('<select>')
+        .addClass("selectCantidad")
+        .attr("id", fila.articulo.id + fila.talla)
+        .appendTo(adicional);
+    //Se rellena del 1 al 10
+    for (i = 1; i <= 10; i++) {
+        cantidad.append($('<option></option>').val(i).html(i))
+    }
+
+    //Se selecciona por defecto la cantidad elegida
+    $(".selectCantidad#" + fila.articulo.id + fila.talla + " > option[value='" + fila.cantidad + "']").attr("selected", true);
+
+}
+
+function selectTallas(adicional,fila) {
+    //Array de tallas
+    let arr = [
+        { val: "XS", text: 'XS' },
+        { val: "S", text: 'S' },
+        { val: "M", text: 'M' },
+        { val: "L", text: 'L' },
+        { val: "XL", text: 'XL' }
+    ];
+
+    //Etiqueta
+    let tall = $("<p> Talla: </p>")
+        .appendTo(adicional);
+
+    //Select
+    let tallas = $('<select>')
+        .addClass("selectTallas")
+        .attr("id", fila.articulo.id + fila.talla)
+        .on('change',function (){cambioTalla.call(this,fila)})
+        .appendTo(adicional);
+    $(arr).each(function () {
+        tallas.append($("<option>").attr('value', this.val).text(this.text));
+    });
+
+    //Se selecciona por defecto la talla elegida
+    $(".selectTallas#" + fila.articulo.id + fila.talla + " > option[value='" + fila.talla + "']").attr("selected", true);
+
+}
+
+function cambioTalla(fila){
+    //var optionSelected = $("option:selected", this);
+    console.log("hola?");
+    var valueSelected = this.value;
+    console.log(fila.articulo.id+" : "+valueSelected);
+
+    //Cambiamos la talla en el carrito
+    carrito.changeTalla(fila.articulo.id,fila.talla,valueSelected);
+    //Se actualiza en localStorage    
+    localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
+    //Se actualiza la vista
+    showCart();
 }
 
 /**

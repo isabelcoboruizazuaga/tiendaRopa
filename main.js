@@ -1,6 +1,5 @@
 window.onload = () => {
     let cart=JSON.parse(localStorage.getItem('carrito'));
-    console.log(cart);
     if(cart!=null){
         carrito= new CarritoCompra(cart);
     }else{

@@ -1,4 +1,3 @@
-
 function showRegister() {
     let main = $("main");
     main.empty();
@@ -20,10 +19,13 @@ function showRegister() {
     let submit=$("<input>")
     .attr("type","submit")
     .attr("value","Registrarme")
+    .click(function () {
+        addUser();
+        return false;
+    })
     .appendTo(form);
     
 }
-
 function showFielsetSesion(form){
     let fieldSesion=$("<fieldset>")
     .appendTo(form);
@@ -40,6 +42,7 @@ function showFielsetSesion(form){
     .attr("type","email")
     .attr("id","email")
     .attr("name","email")
+    .attr("required", true)
     .appendTo(div1);
 
     let div2=$("<div>")
@@ -51,6 +54,7 @@ function showFielsetSesion(form){
     .attr("type","text")
     .attr("id","username")
     .attr("name","username")
+    .attr("required", true)
     .appendTo(div2);
 
     let div3=$("<div>")
@@ -62,6 +66,7 @@ function showFielsetSesion(form){
     .attr("type","password")
     .attr("id","password")
     .attr("name","password")
+    .attr("required", true)
     .appendTo(div3);
 }
 
@@ -81,6 +86,7 @@ function showFielsetPersonal(form){
     .attr("type","text")
     .attr("id","nombre")
     .attr("name","nombre")
+    .attr("required", true)
     .appendTo(div1);
 
     let div2=$("<div>")
@@ -92,6 +98,7 @@ function showFielsetPersonal(form){
     .attr("type","text")
     .attr("id","apellidos")
     .attr("name","apellidos")
+    .attr("required", true)
     .appendTo(div2);
     
     let div3=$("<div>")
@@ -157,4 +164,72 @@ function showFielsetDireccion(form){
     .attr("id","zip")
     .attr("name","zip")
     .appendTo(div4);
+}
+
+function addUser(){
+   httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = respuesta;
+
+    let usu={
+        email: $("#email").val(),
+        username:$("#username").val(),
+        password:$("#password").val(),
+        name:{
+            firstname:$("#nombre").val(),
+            lastname:$("#apellidos").val()
+        },
+        address:{
+            city:$("#ciudad").val(),
+            street:$("#calle").val(),
+            number:$("#numero").val(),
+            zipcode:$("#zip").val(),
+            geolocation:{
+                lat:'0',
+                long:'0'
+            }
+        },
+        phone:$("#tel").val()
+    }
+
+    httpRequest.open("POST", "https://fakestoreapi.com/users");
+    httpRequest.send(JSON.stringify(usu));
+    
+}
+
+function respuesta() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+            var usuario = JSON.parse(httpRequest.responseText);
+
+            //La api nos devuelve un id solo (1 o 11), como eso no nos sirve lo maqueto dándole al objeto un id único
+            id= usuario.id; //id que devuelve la api
+            const uid = Date.now().toString(36) + Math.random().toString(36).slice(2) //id único para el usuario
+
+            usu={
+                id: uid,
+                email: $("#email").val(),
+                username:$("#username").val(),
+                password:$("#password").val(),
+                name:{
+                    firstname:$("#nombre").val(),
+                    lastname:$("#apellidos").val()
+                },
+                address:{
+                    city:$("#ciudad").val(),
+                    street:$("#calle").val(),
+                    number:$("#numero").val(),
+                    zipcode:$("#zip").val(),
+                    geolocation:{
+                        lat:'0',
+                        long:'0'
+                    }
+                },
+                phone:$("#tel").val()
+            }
+
+            console.log(usu);
+        } else {
+            alert("There was a problem with the request.");
+        }
+    }
 }

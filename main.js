@@ -1,4 +1,5 @@
 var carrito;
+var usu="";
 window.onload = () => {
     let cart = JSON.parse(localStorage.getItem('carrito'));
     if (cart != null) {

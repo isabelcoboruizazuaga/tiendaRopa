@@ -267,6 +267,13 @@ main .carrito img {
     margin-right: 2rem;
 }
 
+/*------------REGISTRO------------*/
+main .registro form fieldset{
+    display: flex;
+    flex-direction: column;
+}
+
+
 /*------------FOOTER------------*/
 footer {
     grid-area: 3 / 1 / 4 / 10;

@@ -105,11 +105,12 @@ function selectCantidad(adicional,fila) {
         .on('change',function (){cambioCantidad.call(this,fila)})
         .appendTo(adicional);
     //Se rellena del 1 al 10
-    for (i = 1; i <= 10; i++) {
+    for (i = 1; i <= 20; i++) {
         cantidad.append($('<option></option>').val(i).html(i))
     }
 
     //Se selecciona por defecto la cantidad elegida
+    console.log(fila.cantidad);
     $(".selectCantidad#" + fila.articulo.id + fila.talla + " > option[value='" + fila.cantidad + "']").attr("selected", true);
 }
 

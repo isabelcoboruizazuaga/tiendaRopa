@@ -182,7 +182,7 @@ class CarritoCompra {
             //Si la fila es la que buscamos (el articulo es el id y la talla corresponde)
             if (fila.articulo.id == id && fila.talla == talla) {
                 //Sacamos la cantidad vieja y la aumentamos
-                let newCantidad = fila.cantidad + cantidadASumar;
+                let newCantidad = parseInt(fila.cantidad) + parseInt(cantidadASumar);
                 //Devolvemos la nueva fila con la cantidad ya cambiada
                 fila.setCantidad(newCantidad);
                 return fila;

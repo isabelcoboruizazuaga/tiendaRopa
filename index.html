@@ -9,6 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='Models/FilaCarrito.js'></script>
     <script src='Models/CarritoCompra.js'></script>
+    <script src='Controllers/loginController.js'></script>
     <script src='Controllers/registroController.js'></script>
     <script src='Controllers/cartController.js'></script>
     <script src='Controllers/productoController.js'></script>
@@ -23,8 +24,8 @@
         <div class="identificacion">
             <img src="imgs/logo.jpg" alt="tienda Isa" class="imgLogo">
             <div class="enlaces">
-                <a href="#">Inicio sesión</a>
-                <a href="#" id="registrarse">Registro</a>
+                <p id="iniciarSesion">Inicio sesión</p>
+                <p id="registrarse">Registro</p>
                 <i class="fa-solid fa-cart-shopping" id="carro"></i>
             </div>
         </div>
@@ -226,6 +227,22 @@
                     </div>
                 </fieldset>
                 <input type="submit" value="Registrarme">
+            </form>
+        </section>-->
+       <!-- <section class="login">
+            <form>
+                <fieldset>
+                    <legend>Inicia sesión</legend>
+                    <div>
+                        <label for="usernameLogin">Nombre de usuario:</label>
+                        <input type="text" id="usernameLogin" name="usernameLogin" required>
+                    </div>
+                    <div>
+                        <label for="passwordLogin">Contraseña:</label>
+                        <input type="password" id="passwordLogin" name="passwordLogin" required>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión">
+                </fieldset>
             </form>
         </section>-->
     

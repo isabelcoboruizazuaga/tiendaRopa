@@ -1,13 +1,20 @@
 var carrito;
 var usu="";
+var listaUsuarios=[];
 window.onload = () => {
     let cart = JSON.parse(localStorage.getItem('carrito'));
     if (cart != null) {
         carrito = new CarritoCompra(cart);
     } else {
-        carrito = new CarritoCompra()
+        carrito = new CarritoCompra();
     }
 
+    let usuarios= JSON.parse(localStorage.getItem('usuarios'));
+    if (usuarios != null) {
+        listaUsuarios = usuarios;
+    } else {
+        listaUsuarios=[];
+    }
 
     //Click events para las categorías
     $(".art-all").click(() => { requestAllProducts(); })
@@ -20,7 +27,10 @@ window.onload = () => {
 
     //Click events de registro e inicio de sesión
     $("#registrarse").click(() => { showRegister(); });
+    $("#iniciarSesion").click(() => { showLogin(); });
 
+    showLogin();
+    
     /*let carrito= new CarritoCompra();
     let articulo={id:98,title:"Jacket",description:"azul"};
     carrito.addToCart(articulo,"L",1);

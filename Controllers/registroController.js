@@ -201,10 +201,10 @@ function respuesta() {
         if (httpRequest.status === 200) {
             var usuario = JSON.parse(httpRequest.responseText);
 
-            //La api nos devuelve un id solo (1 o 11), como eso no nos sirve lo maqueto dándole al objeto un id único
+            //La api nos devuelve un id solo (1 o 11), como eso no me sirve lo maqueto dándole al objeto un id único
             id= usuario.id; //id que devuelve la api
             const uid = Date.now().toString(36) + Math.random().toString(36).slice(2) //id único para el usuario
-
+            
             usu={
                 id: uid,
                 email: $("#email").val(),
@@ -224,10 +224,16 @@ function respuesta() {
                         long:'0'
                     }
                 },
-                phone:$("#tel").val()
+                phone:$("#tel").val(),
+                cart:{}
             }
 
-            console.log(usu);
+            //Guardo el usuario en localstorage ya que la bd de la api no sirve
+            listaUsuarios.push(usu);
+            localStorage.setItem('usuarios',  JSON.stringify(listaUsuarios));
+
+            //Redirijo a iniciar sesión
+            showLogin();
         } else {
             alert("There was a problem with the request.");
         }

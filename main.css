@@ -89,10 +89,13 @@ header div.identificacion img {
 /*Enlaces*/
 header div.identificacion .enlaces {
     padding: 1rem;
+    display: flex;
+    align-items: center;
 }
 
-header div.identificacion .enlaces a {
+header div.identificacion .enlaces p {
     padding: 1rem;
+    cursor:pointer;
 }
 
 /*Barra de navegación*/

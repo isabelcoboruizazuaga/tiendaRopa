@@ -16,9 +16,10 @@
         <div class="identificacion">
             <img src="imgs/logo.jpg" alt="tienda Isa" class="imgLogo">
             <div class="enlaces">
-                <a href="#">Inicio sesión</a>
-                <a href="#">Registro</a>
-                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                <p id="iniciarSesion">Inicio sesión</p>
+                <p id="registrarse">Registro</p>
+                <p id="cerrarSesion">Cerrar Sesión</p>
+                <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
         <nav>
@@ -268,6 +269,23 @@
                 <input type="submit" value="Registrarme">
             </form>
         </section>-->
+        <section class="login">
+            <form class="inicioSesionForm">
+                <fieldset>
+                    <legend>Inicia sesión</legend>
+                    <div>
+                        <label for="usernameLogin">Nombre de usuario:</label>
+                        <input type="text" id="usernameLogin" name="usernameLogin" required>
+                    </div>
+                    <div>
+                        <label for="passwordLogin">Contraseña:</label>
+                        <input type="password" id="passwordLogin" name="passwordLogin" required>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión">
+                </fieldset>                
+                <p>El usuario o contraseña no son correctos </p>
+            </form>
+        </section>
     </main>
     <footer>
         <section id="ayuda">

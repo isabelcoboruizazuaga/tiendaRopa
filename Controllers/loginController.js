@@ -50,7 +50,7 @@ function showLogin() {
             iniciaSesion();
             return false;
         })
-        .appendTo(fieldSesion);
+        .appendTo(form);
 
 }
 
@@ -102,15 +102,17 @@ function compruebaUsu(username, password) {
 
             $("<p> Cerrar Sesión</p>")
                 .attr("id", "cerrarSesion")
+                .click(cerrarSes)
                 .appendTo(enlaces);
 
             $("<i>")
                 .addClass("fa-solid fa-cart-shopping")
                 .attr("id", "carro")
+                .click(() => { showCart(); })
                 .appendTo(enlaces);
 
             //Redirección al menú principal
-            showCart();
+            requestAllProducts();
         } else {
             showLogin();
             $("<p>El usuario o contraseña no son correctos </p>")
@@ -118,4 +120,29 @@ function compruebaUsu(username, password) {
                 .appendTo(".inicioSesionForm");
         }
     }
+}
+
+
+function cerrarSes() {
+    usu = "";
+
+    let enlaces = $(".enlaces")
+        .empty();
+
+    $("<p> Inicio sesión</p>")
+        .attr("id", "iniciarSesion")
+        .click(() => { showLogin(); })
+        .appendTo(enlaces);
+    $("<p> Registro</p>")
+        .attr("id", "registrarse")
+        .click(() => { showRegister(); })
+        .appendTo(enlaces);
+    $("<i>")
+        .addClass("fa-solid fa-cart-shopping")
+        .attr("id", "carro")
+        .click(() => { showCart(); })
+        .appendTo(enlaces);
+
+    //Redirección al menú principal
+    requestAllProducts();
 }

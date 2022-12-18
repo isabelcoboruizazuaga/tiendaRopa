@@ -81,7 +81,6 @@ function respuestaSesion() {
         }
     }
     //Como no hay respuesta por el CORS simulamos que el inicio es correcto
-    // usu= 
     compruebaUsu($("#usernameLogin").val(), $("#passwordLogin").val());
 
 }

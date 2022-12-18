@@ -76,13 +76,36 @@ function mostrarProducto(item){
 
     let add = $('<button> Añadir al carrito </button>')
     .click(function (){
+        if(usu!=""){
         //Se añade el artículo al carrito
         let talla=$( ".tallaProduct option:selected" ).text();
         carrito.addToCart(item,talla,1);
 
         //Se añade a local storage
         localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
-
+        sustituirUsuario(usu.id);
+        }else{
+            alert("Debes iniciar sesión para añadir un artículo al carrito");
+        }
     })
     .appendTo(info);
+}
+
+function sustituirUsuario(id){
+    //Se sustituye el carrito por el actual
+    usu.carrito=JSON.stringify(carrito.getCarrito());
+
+    listaUsuarios = JSON.parse(localStorage.getItem('usuarios'));
+
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        const usuario = listaUsuarios[i];
+        if (usuario.id == id) {
+            //Se elimina el usuario desactualizado
+            listaUsuarios.splice(i, 1);
+            //Se añade el usuario con el nuevo carrito
+            listaUsuarios.push(usu);
+            //Se devuelve al localStorage
+            localStorage.setItem('usuarios', JSON.stringify(listaUsuarios));
+        } 
+    }
 }

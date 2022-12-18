@@ -225,7 +225,7 @@ function respuesta() {
                     }
                 },
                 phone: $("#tel").val(),
-                cart: {}
+                carrito: {}
             }
 
             //Se comprueba que el usuario no exista, lo hago manualmente con el storage local ya que la api no lo hace

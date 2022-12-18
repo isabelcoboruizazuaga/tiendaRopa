@@ -35,9 +35,29 @@ function showCart() {
  */
 function showProduct(container) {
     //Se obtiene el carrito
-    let carro = new CarritoCompra(JSON.parse(localStorage.getItem('carrito')));
-    let carritoArr = carro.getCarrito();
+    let carritoArr = [];
+    if (usu == "") {
+        //Si no hay sesión iniciada se coge el último
+        let carro = new CarritoCompra(JSON.parse(localStorage.getItem('carrito')));
+        carritoArr = carro.getCarrito();
+    } else {
+        //Si hay sesión iniciada se coge el carrito del usuario
+        let usuarios = JSON.parse(localStorage.getItem('usuarios'));
+        for (let i = 0; i < usuarios.length; i++) {
+            const usuario = usuarios[i];
+            if (usuario.id == usu.id) {
+                try {
+                    carrito = new CarritoCompra(JSON.parse(usuario.carrito));
+                    carritoArr = carrito.getCarrito();
 
+                    } catch (error) {
+                    carrito = new CarritoCompra();
+                }
+                //Se establece el último carrito de storage al del usuario
+                localStorage.setItem('carrito', JSON.stringify(carrito.getCarrito()));
+            }
+        }
+    }
     carritoArr.forEach(fila => {
         let divItem = $("<div>")
             .addClass("item-c")
@@ -62,15 +82,15 @@ function showProduct(container) {
             .appendTo(datos);
 
         //Selects de tallas y cantidad
-        selectTallas(adicional,fila);
-        selectCantidad(adicional,fila);
+        selectTallas(adicional, fila);
+        selectCantidad(adicional, fila);
 
         let borrar = $("<i>")
             .addClass("fa-solid fa-trash-can")
-            .click(function(){borrarArticulo(fila)})
+            .click(function () { borrarArticulo(fila) })
             .appendTo(adicional);
 
-        let precio = $("<h2>"+ fila.articulo.price +"€</h2>")
+        let precio = $("<h2>" + fila.articulo.price + "€</h2>")
             .appendTo(divItem);
     });
 }
@@ -79,11 +99,13 @@ function showProduct(container) {
  * Borra un artículo del carrito
  * @param {FilaCarrito} fila 
  */
-function borrarArticulo(fila){
+function borrarArticulo(fila) {
     //Se elimina del array
-    carrito.deleteFromCart(fila.articulo.id,fila.talla);
-    //Se actualiza en localStorage    
-    localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
+    carrito.deleteFromCart(fila.articulo.id, fila.talla);
+    //Se actualiza el usuario en localStorage
+    sustituirUsuario(usu.id);
+    //Se actualiza en localStorage el carrito  
+    localStorage.setItem('carrito', JSON.stringify(carrito.getCarrito()));
     //Se actualiza la vista
     showCart();
 }
@@ -93,7 +115,7 @@ function borrarArticulo(fila){
  * @param {JQuery} adicional elemento al que se adjunta
  * @param {FilaCarrito} fila 
  */
-function selectCantidad(adicional,fila) {
+function selectCantidad(adicional, fila) {
     //Etiqueta
     let cant = $("<p> Cantidad: </p>")
         .appendTo(adicional);
@@ -102,7 +124,7 @@ function selectCantidad(adicional,fila) {
     let cantidad = $('<select>')
         .addClass("selectCantidad")
         .attr("id", fila.articulo.id + fila.talla)
-        .on('change',function (){cambioCantidad.call(this,fila)})
+        .on('change', function () { cambioCantidad.call(this, fila) })
         .appendTo(adicional);
     //Se rellena del 1 al 10
     for (i = 1; i <= 20; i++) {
@@ -110,7 +132,6 @@ function selectCantidad(adicional,fila) {
     }
 
     //Se selecciona por defecto la cantidad elegida
-    console.log(fila.cantidad);
     $(".selectCantidad#" + fila.articulo.id + fila.talla + " > option[value='" + fila.cantidad + "']").attr("selected", true);
 }
 
@@ -119,7 +140,7 @@ function selectCantidad(adicional,fila) {
  * @param {JQuery} adicional elemento al que se adjunta
  * @param {FilaCarrito} fila 
  */
-function selectTallas(adicional,fila) {
+function selectTallas(adicional, fila) {
     //Array de tallas
     let arr = [
         { val: "XS", text: 'XS' },
@@ -137,7 +158,7 @@ function selectTallas(adicional,fila) {
     let tallas = $('<select>')
         .addClass("selectTallas")
         .attr("id", fila.articulo.id + fila.talla)
-        .on('change',function (){cambioTalla.call(this,fila)})
+        .on('change', function () { cambioTalla.call(this, fila) })
         .appendTo(adicional);
     $(arr).each(function () {
         tallas.append($("<option>").attr('value', this.val).text(this.text));
@@ -153,13 +174,15 @@ function selectTallas(adicional,fila) {
  * @param {FilaCarrito} fila 
  * @see selectCantidad
  */
-function cambioCantidad(fila){
+function cambioCantidad(fila) {
     var newCantidad = this.value;
 
     //Cambiamos la cantidad en el carrito
-    carrito.changeCantidad(fila.articulo.id,fila.talla,newCantidad)
-    //Se actualiza en localStorage    
-    localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
+    carrito.changeCantidad(fila.articulo.id, fila.talla, newCantidad)
+    //Se actualiza el usuario en localStorage
+    sustituirUsuario(usu.id);
+    //Se actualiza en localStorage el carrito  
+    localStorage.setItem('carrito', JSON.stringify(carrito.getCarrito()));
     //Se actualiza la vista
     showCart();
 }
@@ -169,13 +192,15 @@ function cambioCantidad(fila){
  * @param {FilaCarrito} fila 
  * @see selectTallas
  */
-function cambioTalla(fila){
+function cambioTalla(fila) {
     var tallaSelected = this.value;
 
     //Cambiamos la talla en el carrito
-    carrito.changeTalla(fila.articulo.id,fila.talla,tallaSelected);
-    //Se actualiza en localStorage    
-    localStorage.setItem('carrito',  JSON.stringify(carrito.getCarrito()));
+    carrito.changeTalla(fila.articulo.id, fila.talla, tallaSelected);
+    //Se actualiza el usuario en localStorage
+    sustituirUsuario(usu.id);
+    //Se actualiza en localStorage el carrito  
+    localStorage.setItem('carrito', JSON.stringify(carrito.getCarrito()));
     //Se actualiza la vista
     showCart();
 }
@@ -184,7 +209,7 @@ function cambioTalla(fila){
  * Coloca el resumen de pedido en el html
  * @param {JQuery} carritoDiv 
  */
-function showResumen(carritoDiv) {    
+function showResumen(carritoDiv) {
     let resumen = $("<div>")
         .addClass("resumen")
         .appendTo(carritoDiv);
@@ -197,7 +222,7 @@ function showResumen(carritoDiv) {
         .appendTo(resumen);
     let sub = $("<p> Subtotal </p>")
         .appendTo(subtoDiv);
-    let subto = $("<p> "+carrito.calculaSubtotal().toFixed(2)+"€</p>")
+    let subto = $("<p> " + carrito.calculaSubtotal().toFixed(2) + "€</p>")
         .appendTo(subtoDiv);
 
     let envioDiv = $("<div>")
@@ -213,7 +238,7 @@ function showResumen(carritoDiv) {
         .appendTo(resumen);
     let tot = $("<p> Total </p>")
         .appendTo(totDiv);
-    let total = $("<p> "+carrito.calculaTotal().toFixed(2)+"</p>")
+    let total = $("<p> " + carrito.calculaTotal().toFixed(2) + "</p>")
         .appendTo(totDiv);
 
     let pag = $("<button> Pasar por caja </button>")

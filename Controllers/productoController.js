@@ -91,6 +91,10 @@ function mostrarProducto(item){
     .appendTo(info);
 }
 
+/**
+ * Sustituye un usuario dado en localStorage por el mismo usuario con el carrito actualizado
+ * @param {String} id id del usuario a actualizar
+ */
 function sustituirUsuario(id){
     //Se sustituye el carrito por el actual
     usu.carrito=JSON.stringify(carrito.getCarrito());

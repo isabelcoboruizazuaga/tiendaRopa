@@ -1,3 +1,9 @@
+/**
+ * Coloca en el html el formulario para iniciar sesión
+ * @see showFielsetSesion
+ * @see showFielsetPersonal
+ * @see showFielsetDireccion
+ */
 function showRegister() {
     let main = $("main");
     main.empty();
@@ -26,6 +32,11 @@ function showRegister() {
         .appendTo(form);
 
 }
+
+/**
+ * Coloca en el formulario el fieldset de los datos de sesión
+ * @param {JQuery} form 
+ */
 function showFielsetSesion(form) {
     let fieldSesion = $("<fieldset>")
         .appendTo(form);
@@ -70,6 +81,10 @@ function showFielsetSesion(form) {
         .appendTo(div3);
 }
 
+/**
+ * Coloca en el formulario el fieldset de los datos personales
+ * @param {JQuery} form 
+ */
 function showFielsetPersonal(form) {
     let fieldPersonal = $("<fieldset>")
         .appendTo(form);
@@ -113,6 +128,10 @@ function showFielsetPersonal(form) {
         .appendTo(div3);
 }
 
+/**
+ * Coloca en el formulario el fieldset de los datos de dirección
+ * @param {JQuery} form 
+ */
 function showFielsetDireccion(form) {
     let fieldDirec = $("<fieldset>")
         .appendTo(form);
@@ -166,6 +185,9 @@ function showFielsetDireccion(form) {
         .appendTo(div4);
 }
 
+/**
+ * Realiza una petición a la api para registrar un usuario
+ */
 function addUser() {
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = respuesta;
@@ -196,6 +218,10 @@ function addUser() {
 
 }
 
+/**
+ * Recoge la respuesta de la api al registro del usuario
+ * (se ha mockeado la respuesta en el interio debido a que la api no responde correctamente)
+ */
 function respuesta() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
@@ -246,6 +272,12 @@ function respuesta() {
     }
 }
 
+/**
+ * Comprueba si un usuario está ya insertado en la base de datos local 
+ * @param {Array} usuarios 
+ * @param {String} username 
+ * @returns {boolean} true si el usuario ya existe, false si no
+ */
 function userExiste(usuarios, username) {
     if (usuarios) {
         for (let i = 0; i < usuarios.length; i++) {

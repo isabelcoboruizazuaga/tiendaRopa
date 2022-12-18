@@ -199,22 +199,25 @@ class CarritoCompra {
      * Devuelve el subtotal del pedido
      * @returns {String} subtotal
      */
-    calculaSubtotal(){
-        let subtotal=0;
+    calculaSubtotal() {
+        let subtotal = 0;
 
-         //Se recorre el carrito y se añade el precio al subtotal
-         //Se recorre el carrito
+        //Se recorre el carrito y se añade el precio al subtotal
+        //Se recorre el carrito
         for (let i = 0; i < this.carrito.length; i++) {
-            const fila = this.carrito[i];            
+            const fila = this.carrito[i];
 
-            let precioArt= fila.articulo.price * fila.cantidad;
-            subtotal=subtotal+precioArt;  
+            let precioArt = fila.articulo.price * fila.cantidad;
+            subtotal = subtotal + precioArt;
         }
 
         return subtotal;
     }
-
-    calculaTotal(){
-        return this.calculaSubtotal()+2.99;
+    /**
+    * Devuelve el total del pedido
+    * @returns {String} total
+     */
+    calculaTotal() {
+        return this.calculaSubtotal() + 2.99;
     }
 }

@@ -29,7 +29,6 @@ window.onload = () => {
     $("#registrarse").click(() => { showRegister(); });
     $("#iniciarSesion").click(() => { showLogin(); });
 
-    showLogin();
     
     /*let carrito= new CarritoCompra();
     let articulo={id:98,title:"Jacket",description:"azul"};

@@ -50,7 +50,7 @@ function showProduct(container) {
                     carrito = new CarritoCompra(JSON.parse(usuario.carrito));
                     carritoArr = carrito.getCarrito();
 
-                    } catch (error) {
+                } catch (error) {
                     carrito = new CarritoCompra();
                 }
                 //Se establece el último carrito de storage al del usuario

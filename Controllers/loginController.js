@@ -1,3 +1,6 @@
+/**
+ * Rellena el html con la vista de iniciar sesión
+ */
 function showLogin() {
     let main = $("main");
     main.empty();
@@ -54,6 +57,9 @@ function showLogin() {
 
 }
 
+/**
+ * Realiza una petición a la api para iniciar sesión
+ */
 function iniciaSesion() {
     httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = respuestaSesion;
@@ -71,6 +77,11 @@ function iniciaSesion() {
     }));
 }
 
+/**
+ * Recoge la respuesta de iniciar sesión
+ * (al fallar la api los datos se mockean)
+ * @see compruebaUsu
+ */
 function respuestaSesion() {
     //Aquí supuestamente la api devuelve un código si el inicio es correcto pero falla
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -85,6 +96,11 @@ function respuestaSesion() {
 
 }
 
+/**
+ * Comprueba si un usuario está en la base de datos local para iniciar sesión
+ * @param {String} username 
+ * @param {String} password 
+ */
 function compruebaUsu(username, password) {
     let usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
@@ -121,7 +137,9 @@ function compruebaUsu(username, password) {
     }
 }
 
-
+/**
+ * Cierra la sesión de un usuario
+ */
 function cerrarSes() {
     usu = "";
 

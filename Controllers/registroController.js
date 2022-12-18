@@ -297,6 +297,7 @@ function userExiste(usuarios, username) {
 function sendEmailConfirmacion() {
     emailjs.send("service_tvuq3q8","template_tjm0xsf",{
         from_name: "Tienda Ropa Isa",
+        to_name: $("#nombre").val(),
         message: "Tus credenciales son: \n nombre de usuario:"+$("#username").val() +" \n contraseña: "+$("#password").val(),
         email: $("#email").val(),
         })

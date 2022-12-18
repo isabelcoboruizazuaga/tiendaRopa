@@ -238,10 +238,34 @@ function showResumen(carritoDiv) {
         .appendTo(resumen);
     let tot = $("<p> Total </p>")
         .appendTo(totDiv);
-    let total = $("<p> " + carrito.calculaTotal().toFixed(2) + "</p>")
+    let total = $("<p> " + carrito.calculaTotal().toFixed(2) + "€</p>")
         .appendTo(totDiv);
 
     let pag = $("<button> Pasar por caja </button>")
+        .click(function () {hacerPedido();})
         .appendTo(resumen);
 
+}
+
+/**
+ * On Click de pasar por caja, envía un correo de confirmación y vacía el carrito
+ */
+function hacerPedido() {
+    //Email de confirmación
+    emailjs.send("service_tvuq3q8","template_6zzxns5",{        
+        to_name: usu.username,
+        message: "Tu pedido por valor de: "+ carrito.calculaTotal().toFixed(2)+"€ se ha realizado correctamente",
+        email: usu.email,
+        })
+        .then(function(response) {
+            alert("Registro correcto, email de confirmación enviado");
+        }, function(error) {
+            alert("Hubo un error al enviar el email de confirmación");
+        });
+    //Se vacían los carritos
+    carrito=new CarritoCompra();
+    sustituirUsuario(usu.id);    
+    localStorage.setItem('carrito', JSON.stringify(carrito.getCarrito()));
+    //Se muestra el carrito ya vacío
+    showCart();
 }

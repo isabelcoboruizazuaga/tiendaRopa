@@ -264,8 +264,9 @@ function respuesta() {
                 listaUsuarios.push(usu);
                 localStorage.setItem('usuarios', JSON.stringify(listaUsuarios));
 
+                //Envío el email de confirmación
+                sendEmailConfirmacion();
                 //Redirijo a iniciar sesión
-                alert("Registro exitoso");
                 showLogin();
             }
         }
@@ -290,3 +291,18 @@ function userExiste(usuarios, username) {
     return false;
 }
 
+/**
+ * Envía un mensaje de confirmación de registro al correo introducido por el usuario
+ */
+function sendEmailConfirmacion() {
+    emailjs.send("service_tvuq3q8","template_tjm0xsf",{
+        from_name: "Tienda Ropa Isa",
+        message: "Tus credenciales son: \n nombre de usuario:"+$("#username").val() +" \n contraseña: "+$("#password").val(),
+        email: $("#email").val(),
+        })
+        .then(function(response) {
+            alert("Registro correcto, email de confirmación enviado");
+        }, function(error) {
+            alert("Hubo un error al enviar el email de confirmación");
+        });
+}

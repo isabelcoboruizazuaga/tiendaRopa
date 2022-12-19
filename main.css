@@ -100,7 +100,7 @@ main .catalogo .item-container {
     grid-row-gap: 2rem;
 }
 
-.item-container .item img {
+main .catalogo .item-container .item img {
     width: 15rem;
 }
 

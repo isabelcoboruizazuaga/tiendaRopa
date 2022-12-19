@@ -1,0 +1,89 @@
+/*------------HEADER------------*/
+header {
+    grid-area: 1 / 1 / 2 / 10;
+    height: fit-content;
+
+    /*Cuadrícula grid dentro del header*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 10rem 7rem    
+}
+
+/*------------IDENTIFICACIÓN------------*/
+header div.identificacion {
+    grid-area: 1 / 1 / 2 / 10;
+    background-color: var(--primary-color);
+
+    /*Layout de la barra*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /*Color*/
+    color: var(--terciary-color);
+
+    /*Tamaño letra*/
+    font-size: 125%;
+    
+}
+
+/*Logo*/
+header div.identificacion #divLogo{
+    display: flex;
+    align-items: center;
+
+    margin-left: 2rem;
+
+    font-size: 150%;
+    font-family: 'Cinzel', serif;
+} 
+header div.identificacion img {
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+}
+
+/*Enlaces*/
+header div.identificacion .enlaces {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+header div.identificacion .enlaces p {
+    padding: 1rem;
+    margin-right: 2rem;
+    cursor:pointer;
+}
+
+header div.identificacion .enlaces i {
+    padding: 1rem;
+    margin-right: 2rem;
+}
+
+
+/*------------NAVEGACIÓN------------*/
+header nav {
+    grid-area: 2 / 4 / 3 / 7;
+    height: 100%;
+
+    /*Estilos*/
+    background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+    border-radius: 0.5rem;
+}
+
+header nav ul {
+    /*Tamaños y distancias*/
+    height:inherit;
+    margin-right: 4rem;
+    margin-top: 0;
+
+    /*Estilos*/
+    list-style-type: none;
+    cursor:pointer;
+
+    /*Display*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}

@@ -1,0 +1,184 @@
+/*------------VALORES INICIALES------------*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;800&family=Yanone+Kaffeesatz&display=swap');
+
+::before *,
+::after * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.8;
+
+}
+
+:root {
+    /*Variables*/
+    --terciary-color: #ffffff;
+    --grey: rgba(219, 219, 219, 0.508);
+    --primary-color: #000000;
+
+    --fucsia: #A21F6B;
+    --dark-blue:#0B1546; 
+    --dark-grey: #343434;
+
+    /*Estilo del texto*/    
+    font-size: 65.5%;/*10px*/
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: var(--terciary-color);
+
+}
+
+body {
+    font-size: 150%;
+
+    background-color: var(--terciary-color);
+}
+
+h1 {
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 5px;
+
+    font-size: 200%;    
+}
+li p, h2,h1{
+    
+    font-family: 'Cinzel', serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--terciary-color);
+}
+i{ 
+    cursor:pointer;}
+
+
+/*------------BODY------------*/
+body {
+    width: 98vw;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 17rem fit-content(100%) fit-content(10rem);
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+
+/*------------MAIN------------*/
+main {
+    grid-area: 2 / 1 / 3/ 10;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+main section{
+    border-radius: 2rem;
+}
+
+
+
+
+
+/*------------CATÁLOGO------------*/
+main .catalogo {
+    grid-area: 1/1/2/2;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, fit-content(100%));
+    grid-row-gap: 0.5rem;
+}
+
+/*Botones de control de orden*/
+main .catalogo .control {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+/*Contenedor de los artículos*/
+main .catalogo .item-container {
+    grid-area: 2 / 1 / 2 / 2;
+    background-color: beige;
+    padding-left: 4rem;
+
+    /*Cuadrícula grid dentro de container*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+}
+
+main .catalogo .item-container .item img {
+    width: 15rem;
+}
+
+
+
+/*------------PRODUCTO (DETALLE)------------*/
+main .detalle {
+    grid-area: 1/1/2/2;
+    margin: 20rem;
+    margin-top: 1rem;
+
+    display: flex;
+}
+
+.detalle-images {
+    width: 50%;
+}
+
+.detalle img {
+    width: 100%;
+}
+
+.detalle .info {
+    width: 50%;
+    margin-left: 1rem;
+}
+
+/*------------CARRITO------------*/
+main .carrito {
+    grid-area: 1/1/2/2;
+    margin: 20rem;
+    margin-top: 1rem;
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 5rem, fit-content(80%);
+}
+
+main .carrito .title{
+    grid-area: 1/1/2/2;
+}
+
+main .carrito .resumen{    
+    grid-area: 2/2/3/3;
+}
+
+/*Contenedor de todos los productos del carrito*/
+main .carrito .container-items {
+    grid-area: 2/1/3/3;
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+main .carrito .container-items .item-c {
+    display: flex;
+}
+
+main .carrito img {
+    
+    width: 20rem;
+    height: 25rem;
+    margin-right: 2rem;
+}
+
+/*------------REGISTRO------------*/
+main .registro form fieldset{
+    display: flex;
+    flex-direction: column;
+}

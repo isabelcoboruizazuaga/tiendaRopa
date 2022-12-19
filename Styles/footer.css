@@ -1,0 +1,60 @@
+/*------------FOOTER------------*/
+footer {
+    grid-area: 3 / 1 / 4 / 10;
+
+    /*Cuadrícula grid dentro del footer*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(2, 5rem);
+
+    /*Colores*/
+    background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+    
+    /*Borde*/
+    border: 0.5rem solid var(--primary-color);
+    border-radius: 1rem;
+}
+
+/*Estilo de todas las secciones del footer*/
+footer section {
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /*Borde*/
+    border-left: 3px solid var(--primary-color);
+}
+
+footer a{
+    text-decoration: underline var(--terciary-color);
+    margin-top: 1rem;
+}
+
+footer #ayuda {
+    grid-area: 1 / 1 / 4 / 3;
+    border-left: none;
+}
+
+footer #nosotros {
+    grid-area: 1 / 3 / 4 / 5;
+}
+
+footer #legal {
+    grid-area: 1 / 5 / 4 / 7;
+}
+
+footer #metodos-pago {
+    grid-area: 1 / 7 / 4 / 9;
+}
+
+footer #metodos-pago i{
+    font-size: 400%;
+}
+
+footer #redes-sociales {
+    grid-area: 1 / 9 / 4 / 10;
+
+    justify-content: space-evenly;
+    font-size: 200%;
+}

@@ -9,11 +9,16 @@
 }
 
 :root {
+    /*Variables*/
+    --terciary-color: #ffffff;
+    --secondary-color: rgba(219, 219, 219, 0.508);
+    --primary-color: #000000;
+
+    /*Estilo del texto*/    
     font-size: 65.5%;
     /*10px*/
     font-family: 'Changa', sans-serif;
-    /*color: white;*/
-
+    color: var(--terciary-color);
 
 }
 
@@ -33,8 +38,6 @@ h1 {
 
     font-size: 200%;
     /*20px*/
-
-    background-color: var(--secondary-transparency);
 }
 
 a {
@@ -55,70 +58,6 @@ body {
     grid-row-gap: 5px;
 }
 
-
-
-/*------------HEADER------------*/
-header {
-    grid-area: 1 / 1 / 2 / 10;
-    background-color: azure;
-    height: fit-content;
-
-    /*Cuadrícula grid dentro del header*/
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(2, 5rem);
-}
-
-/*Barra de identificación*/
-header div.identificacion {
-    grid-area: 1 / 1 / 2 / 10;
-    background-color: antiquewhite;
-
-    /*Layout de la barra*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*Logo*/
-header div.identificacion img {
-    width: 5rem;
-    height: 5rem;
-}
-
-/*Enlaces*/
-header div.identificacion .enlaces {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-header div.identificacion .enlaces p {
-    padding: 1rem;
-    cursor:pointer;
-}
-
-/*Barra de navegación*/
-header nav {
-    grid-area: 2 / 4 / 3 / 7;
-    background-color: aquamarine;
-
-}
-
-header nav ul {
-    display: flex;
-    justify-content: space-between;
-
-    margin-right: 4rem;
-    margin-top: 0;
-    
-    list-style-type: none;
-    cursor:pointer;
-}
-
-
-
-
 /*------------MAIN------------*/
 main {
     grid-area: 2 / 1 / 3/ 10;
@@ -129,46 +68,6 @@ main {
 }
 
 
-/*------------INICIO------------*/
-main .inicio {
-    grid-area: 1/1/2/2;
-
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(14, fit-content(5rem));
-    grid-column-gap: 0px;
-    grid-row-gap: 5px;
-}
-
-main .inicio #hero {
-    grid-area: 1/1/4/4;
-
-    background-color: rgb(154, 73, 73);
-}
-
-main .inicio #eslogan {
-    grid-area: 1/4/4/10;
-
-    background-color: rgb(104, 187, 93);
-}
-
-main .inicio #carrusel {
-    grid-area: 4/1/8/10;
-
-    background-color: rgb(109, 93, 187);
-}
-
-main .inicio #siguenos {
-    grid-area: 8/1/12/10;
-
-    background-color: rgb(163, 93, 187);
-}
-
-main .inicio #recibe-ofertas {
-    grid-area: 12/1/14/10;
-
-    background-color: rgb(93, 170, 187);
-}
 
 
 

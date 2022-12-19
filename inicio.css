@@ -1,0 +1,172 @@
+/*------------INICIO------------*/
+main .inicio {
+    grid-area: 1/1/2/2;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 30rem 30rem repeat(11, fit-content(5rem));
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+
+/*------------HERO------------*/
+main .inicio #hero {
+    grid-area: 1/1/2/4;
+
+    /*Color del texto*/
+    color: #ffffff;
+
+    /*Imagen de fondo*/
+    background-image: url("imgs/heroimgs.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /*Borde*/
+    border: 3px solid var(--primary-color);
+
+}
+main .inicio #hero a{
+    /*Color del texto*/
+    color: #ffffff;
+}
+
+main .inicio #hero .hero_content{
+    height: 100%;
+    margin-left: 1rem;
+    
+    /*Display interior*/
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-evenly;
+}
+
+/*------------ESLOGAN------------*/
+main .inicio #eslogan {
+    grid-area: 1/4/2/10;
+
+    /*Display de contenidos (párrafo eslogan)*/
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    /*Imagen de fondo*/
+    background-image: url("imgs/eslogan.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border: 3px solid var(--primary-color);
+}
+main .inicio #eslogan h1{
+    color: var(--terciary-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+
+/*------------CARRUSEL------------*/
+main .inicio #carrusel {
+    grid-area: 2/1/3/10;
+
+    /*Display de los elementos*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*Estilo*/
+    padding: 30px 10px;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--primary-color);
+
+    /*Transición*/    
+    transition: .4s ease-in;
+    
+    
+  }
+  
+  input[type=radio] {
+    display: none;
+  }
+  
+  .card {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: transform .4s ease;
+    cursor: pointer;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  #item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+    transform: translatex(-40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+  }
+  
+  #item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+    transform: translatex(40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+  }
+  
+  #item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+    transform: translatex(0) scale(1);
+    opacity: 1;
+    z-index: 1;
+    
+    
+  }img {
+      box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------SÍGUENOS------------*/
+main .inicio #siguenos {
+    grid-area: 8/1/12/10;
+
+    background-color: rgb(163, 93, 187);
+}
+
+main .inicio #recibe-ofertas {
+    grid-area: 12/1/14/10;
+
+    background-color: rgb(93, 170, 187);
+}

@@ -1,0 +1,64 @@
+/*------------HEADER------------*/
+header {
+    grid-area: 1 / 1 / 2 / 10;
+    height: fit-content;
+
+    /*Cuadrícula grid dentro del header*/
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(2, 5rem);
+}
+
+/*Barra de identificación*/
+header div.identificacion {
+    grid-area: 1 / 1 / 2 / 10;
+    background-color: var(--primary-color);
+
+    /*Layout de la barra*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--terciary-color);
+    
+}
+
+/*Logo*/
+header div.identificacion img {
+    width: 5rem;
+    height: 5rem;
+}
+
+/*Enlaces*/
+header div.identificacion .enlaces {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+header div.identificacion .enlaces p {
+    padding: 1rem;
+    cursor:pointer;
+}
+
+/*Barra de navegación*/
+header nav {
+    grid-area: 2 / 4 / 3 / 7;
+
+    /*Estilos*/
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-radius: 0.5rem;
+
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+
+    margin-right: 4rem;
+    margin-top: 0;
+    
+    list-style-type: none;
+    cursor:pointer;
+}

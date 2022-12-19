@@ -13,9 +13,6 @@ main .inicio {
 main .inicio #hero {
     grid-area: 1/1/2/4;
 
-    /*Color del texto*/
-    color: #ffffff;
-
     /*Imagen de fondo*/
     background-image: url("imgs/heroimgs.jpg");
     background-size: cover;
@@ -24,11 +21,6 @@ main .inicio #hero {
     /*Borde*/
     border: 3px solid var(--primary-color);
 
-}
-
-main .inicio #hero a {
-    /*Color del texto*/
-    color: #ffffff;
 }
 
 main .inicio #hero .hero_content {
@@ -80,6 +72,7 @@ main .inicio #carrusel {
     padding: 3rem 1rem;
     font-family: 'DM Sans', sans-serif;
     background-color: var(--primary-color);
+    border-radius: 2rem;
 
     /*Transición*/
     transition: .4s ease-in;
@@ -204,9 +197,63 @@ input[type=radio] {
 
 /*------------SÍGUENOS------------*/
 main .inicio #siguenos {
-    grid-area: 8/1/12/10;
+    grid-area: 3/1/4/10;
 
-    background-color: rgb(163, 93, 187);
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+
+    /*Fondo*/
+   /* background-image: linear-gradient(to top right, var(--fucsia), var(--dark-blue));
+    */
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+}
+
+/*Título*/
+main .inicio #siguenos h1{
+    margin-left: 2rem;
+}
+
+/*Contenido*/
+main .inicio #siguenos .content{
+    height: 30rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*Divisor imágenes*/
+main .inicio #siguenos .content .imgs-siguenos{
+    /*Tamaños*/
+    width: 50%;
+    margin: 1rem;
+    margin-bottom: 3rem;
+
+    /*Display*/
+    display: flex;
+}
+
+/*Imágenes*/
+main .inicio #siguenos .content .imgs-siguenos img{
+    width: 30%;
+}
+
+/*Divisor texto y redes*/
+main .inicio #siguenos .content .informacion{
+    width: 40%;
+    margin: 2rem;
+
+    /*Display del interior*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main .inicio #siguenos .content .informacion .redes-sociales{
+    width: 100%;
+    /*Display del interior*/
+    display: flex;
+    justify-content: space-evenly;
 }
 
 main .inicio #recibe-ofertas {

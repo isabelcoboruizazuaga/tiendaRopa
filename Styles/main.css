@@ -75,7 +75,7 @@ main section{
     border-radius: 2rem;
 }
 
-main .detalle,.carrito{
+main .detalle{
     color: #000000;
 }
 
@@ -102,49 +102,3 @@ main .detalle {
     margin-left: 1rem;
 }
 
-/*------------CARRITO------------*/
-main .carrito {
-    grid-area: 1/1/2/2;
-    margin: 20rem;
-    margin-top: 1rem;
-
-    display: grid;
-    grid-template-columns: 70% 30%;
-    grid-template-rows: 5rem, fit-content(80%);
-}
-
-main .carrito .title{
-    grid-area: 1/1/2/2;
-}
-
-main .carrito .resumen{    
-    grid-area: 2/2/3/3;
-}
-
-/*Contenedor de todos los productos del carrito*/
-main .carrito .container-items {
-    grid-area: 2/1/3/3;
-    width: 70%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-}
-
-main .carrito .container-items .item-c {
-    display: flex;
-}
-
-main .carrito img {
-    
-    width: 20rem;
-    height: 25rem;
-    margin-right: 2rem;
-}
-
-/*------------REGISTRO------------*/
-main .registro form fieldset{
-    display: flex;
-    flex-direction: column;
-}

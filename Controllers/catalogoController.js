@@ -66,7 +66,7 @@ function cargarElementos(datos) {
             .appendTo(divItem);
         let nomb = $('<h3>' + item.title + '</h3>')
             .appendTo(divItem);
-        let preci = $('<p>' + item.price + '€</p>')
+        let preci = $('<h4>' + item.price + '€</h4>')
             .appendTo(divItem);
 
         divItem.click(function (event) { requestProductoSeleccionado(item.id);});

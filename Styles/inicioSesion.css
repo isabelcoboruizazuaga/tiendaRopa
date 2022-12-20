@@ -1,0 +1,96 @@
+main .login{
+    height: 60vh;
+    /*Display*/
+    display: flex;
+    justify-content: center;
+
+    /*Letra*/
+    font-size: 150%;
+}
+
+/*Formulario*/
+main .login .inicioSesionForm{
+    /*Tamaño*/
+    width: 30%;
+    padding: 2rem;
+
+    /*Estilo*/
+    background-color:var(--primary-color);
+    border-radius: 2rem;
+    
+    /*Display*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Fielset*/
+main .login fieldset {
+    border: 0;
+}
+
+/*Legend*/
+main .login .inicioSesionForm fieldset legend{
+    /*Centrado*/
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 200%;
+    font-family: 'Cinzel', serif;   
+}
+
+main .login .inicioSesionForm fieldset div{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+
+    padding-top: 5vh;
+}
+
+/*Inputs*/
+main .login .inicioSesionForm fieldset input {
+    /*Tamaños*/
+    width: 50%;
+    font-size: 120%;
+    padding: 0.5rem;
+
+    /*Borde*/
+    border-radius: 3rem;
+    border: none;
+
+}
+
+/*Botón submit*/
+main .login .inicioSesionForm > input {
+    /*Letra*/
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 120%;
+
+    /*Tamaños*/
+    width: 30%;
+    height: 4rem;
+    margin-top: 5vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+
+    /*Borde*/
+    border: none;
+    border-radius: 1rem;
+
+    /*Colores*/
+    color: white;
+    background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));
+}
+
+/*Botón submit hover*/
+main .login .inicioSesionForm >input:hover{
+    background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+    
+    /*Borde*/
+    border-radius: 1rem;
+    border: 1px solid var(--grey);
+}

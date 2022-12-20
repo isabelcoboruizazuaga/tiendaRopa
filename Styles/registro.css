@@ -1,0 +1,17 @@
+main .registro{
+    background-color: var(--primary-color);
+}
+
+
+/*Inputs*/
+main .login .inicioSesionForm fieldset input {
+    /*Tamaños*/
+    width: 50%;
+    font-size: 120%;
+    padding: 0.5rem;
+
+    /*Borde*/
+    border-radius: 3rem;
+    border: none;
+
+}

@@ -271,6 +271,7 @@ main .inicio #recibe-ofertas {
     align-items: center;
 }
 
+/*Formulario*/
 main .inicio #recibe-ofertas form {
     width: 40%;
 
@@ -280,6 +281,7 @@ main .inicio #recibe-ofertas form {
     align-items: center;
 }
 
+/*Input correo*/
 main .inicio #recibe-ofertas form #correo {
     /*Tamaños*/
     width: 70%;
@@ -295,6 +297,7 @@ main .inicio #recibe-ofertas form #correo {
     padding: 1.2rem;
 }
 
+/*Botón*/
 main .inicio #recibe-ofertas form #subscribe {
     /*Tamaños*/
     width: 30%;

@@ -1,0 +1,91 @@
+/*------------CATÁLOGO------------*/
+main .catalogo {
+    grid-area: 1/1/2/2;
+
+    /*Display interno*/
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, fit-content(100%));
+    grid-row-gap: 0.5rem;
+
+    /*Fondo*/
+    background-color: var(--primary-color);
+}
+
+/*Botones de control de orden*/
+main .catalogo .control {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+main .catalogo .control button{
+    /*Tamaños*/
+    width: 10%;
+    height: 50%;
+
+    /*Borde*/
+    border: none;
+    border-radius: 1rem;
+
+    /*Colores*/
+    color: white;
+    background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));
+}
+
+main .catalogo .control button:hover{
+background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+    
+/*Borde*/
+border-radius: 1rem;
+border: 1px solid var(--grey);
+}
+
+/*Contenedor de los artículos*/
+main .catalogo .item-container {
+    grid-area: 2 / 1 / 2 / 2;
+    padding: 2rem;
+
+    /*Cuadrícula grid dentro de container*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-column-gap: 3rem;
+    grid-row-gap: 2rem;
+}
+/*Artículo*/
+main .catalogo .item-container .item{
+    /*Color de fondo*/
+    background-color: var(--terciary-color);
+
+    /*Borde*/
+    border: 3px solid var(--fucsia);
+    border-radius: 2rem;
+
+    /*Letra*/
+    color: var(--primary-color);
+
+    /*Display interior*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+main .catalogo .item-container .item h3{
+    text-align: center;
+}
+main .catalogo .item-container .item:hover{
+    /*Borde*/
+    border: 3px solid var(--dark-blue);
+    border-radius: 2rem;
+
+}
+main .catalogo .item-container .item img {
+    width: 15rem;
+}
+

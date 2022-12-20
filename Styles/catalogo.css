@@ -23,7 +23,7 @@ main .catalogo .control {
 
 }
 
-main .catalogo .control button{
+main .catalogo .control button {
     /*Tamaños*/
     width: 10%;
     height: 50%;
@@ -37,12 +37,12 @@ main .catalogo .control button{
     background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));
 }
 
-main .catalogo .control button:hover{
-background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
-    
-/*Borde*/
-border-radius: 1rem;
-border: 1px solid var(--grey);
+main .catalogo .control button:hover {
+    background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+
+    /*Borde*/
+    border-radius: 1rem;
+    border: 1px solid var(--grey);
 }
 
 /*Contenedor de los artículos*/
@@ -57,8 +57,9 @@ main .catalogo .item-container {
     grid-column-gap: 3rem;
     grid-row-gap: 2rem;
 }
+
 /*Artículo*/
-main .catalogo .item-container .item{
+main .catalogo .item-container .item {
     /*Color de fondo*/
     background-color: var(--terciary-color);
 
@@ -76,16 +77,41 @@ main .catalogo .item-container .item{
     justify-content: space-evenly;
 
 }
-main .catalogo .item-container .item h3{
+
+main .catalogo .item-container .item h3 {
     text-align: center;
 }
-main .catalogo .item-container .item:hover{
+
+main .catalogo .item-container .item:hover {
     /*Borde*/
     border: 3px solid var(--dark-blue);
     border-radius: 2rem;
 
 }
+
 main .catalogo .item-container .item img {
     width: 15rem;
 }
 
+/*------------MEDIA QUERIES------------*/
+@media (max-width: 950px) {
+    /*Botones*/
+    main .catalogo .control button{
+        width: fit-content;
+    }
+    /*Contenedor de los artículos*/
+    main .catalogo .item-container {
+        /*Cuadrícula grid dentro de container*/
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+        grid-row-gap: 1rem;
+    }
+}
+
+@media (max-width: 440px) {
+    main .catalogo .item-container {
+        /*Cuadrícula grid dentro de container*/
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 0rem;
+    }
+}

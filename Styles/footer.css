@@ -9,7 +9,7 @@ footer {
 
     /*Colores*/
     background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
-    
+
     /*Borde*/
     border: 0.5rem solid var(--primary-color);
     border-radius: 1rem;
@@ -26,7 +26,7 @@ footer section {
     border-left: 3px solid var(--primary-color);
 }
 
-footer a{
+footer a {
     text-decoration: underline var(--terciary-color);
     margin-top: 1rem;
 }
@@ -48,7 +48,7 @@ footer #metodos-pago {
     grid-area: 1 / 7 / 4 / 9;
 }
 
-footer #metodos-pago i{
+footer #metodos-pago i {
     font-size: 400%;
 }
 
@@ -57,4 +57,40 @@ footer #redes-sociales {
 
     justify-content: space-evenly;
     font-size: 200%;
+}
+
+/*------------MEDIA QUERIES------------*/
+@media (max-width: 950px) {
+    footer {
+        /*Cuadrícula grid dentro del footer*/
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+    }
+}
+
+@media (max-width: 780px) {
+    footer #ayuda {
+        grid-area: 1 / 1 / 4 / 2;
+        border-left: none;
+    }
+
+    footer #nosotros {
+        grid-area: 1 / 2 / 4 / 3;
+    }
+
+    footer #legal {
+        grid-area: 4 / 1 / 9 / 2;
+        border: none;
+        border-top: 3px solid var(--primary-color);
+    }
+
+    footer #metodos-pago {
+        grid-area: 4 / 2 / 9/ 3;
+        border-top: 3px solid var(--primary-color);
+    }
+
+    footer #redes-sociales {
+        grid-area: 1 / 9 / 10 / 3;
+    }
 }

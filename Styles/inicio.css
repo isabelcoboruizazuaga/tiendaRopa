@@ -4,7 +4,7 @@ main .inicio {
 
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: 30rem 40rem repeat(4, fit-content(10rem));
+    grid-template-rows: 30rem fit-content(40rem) repeat(4, fit-content(10rem));
     grid-column-gap: 0px;
     grid-row-gap: 5px;
 }
@@ -33,11 +33,14 @@ main .inicio #hero .hero_content {
     align-content: flex-start;
     justify-content: space-evenly;
 }
-main .inicio #hero p,a{    
+
+main .inicio #hero p,
+a {
     /*Tamaño letra*/
     font-size: 130%;
 }
-main .inicio #hero a{    
+
+main .inicio #hero a {
     text-decoration: underline;
 }
 
@@ -70,6 +73,7 @@ main .inicio #eslogan h1 {
 /*------------CARRUSEL------------*/
 main .inicio #carrusel {
     grid-area: 2/1/3/10;
+    height: 40vh;
 
     /*Display de los elementos*/
     display: flex;
@@ -133,7 +137,6 @@ input[type=radio] {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    object-fit: cover;
 }
 
 /*Animaciones*/
@@ -247,7 +250,7 @@ main .inicio #siguenos .content .informacion {
 
 /*Iconos redes*/
 main .inicio #siguenos .content .informacion .redes-sociales {
-    width: 100%;    
+    width: 100%;
     font-size: 200%;
 
     /*Display del interior*/
@@ -312,10 +315,60 @@ main .inicio #recibe-ofertas form #subscribe {
     color: white;
     background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));
 }
-main .inicio #recibe-ofertas form #subscribe:hover{
+
+main .inicio #recibe-ofertas form #subscribe:hover {
     background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
-    
+
     /*Borde*/
     border-radius: 1rem;
     border: 1px solid var(--grey);
+}
+
+
+/*------------MEDIA QUERIES------------*/
+
+@media (max-width: 1200px) {
+
+    /*Carrusel*/
+    main .inicio #carrusel {
+        flex-direction: column;
+    }
+
+    /*Ofertas*/
+    main .inicio #recibe-ofertas form {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 740px) {
+
+    /*Imágenes carrusel*/
+    #carrusel .cards {
+        width: 50%;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /*Hero*/
+    .hero_content {
+        font-size: 90%;
+    }
+
+    .hero_content--title {
+        font-size: 150%;
+    }
+
+    /*Síguenos*/
+    main .inicio #siguenos .content {
+        flex-direction: column;
+        font-size: 100%;
+        align-items: center;
+    }
+
+    /*Botón ofertas*/
+    main .inicio #recibe-ofertas form #subscribe {
+        font-size: 90%;
+    }
 }

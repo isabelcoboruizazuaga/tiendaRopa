@@ -74,31 +74,3 @@ main {
 main section{
     border-radius: 2rem;
 }
-
-main .detalle{
-    color: #000000;
-}
-
-
-/*------------PRODUCTO (DETALLE)------------*/
-main .detalle {
-    grid-area: 1/1/2/2;
-    margin: 20rem;
-    margin-top: 1rem;
-
-    display: flex;
-}
-
-.detalle-images {
-    width: 50%;
-}
-
-.detalle img {
-    width: 100%;
-}
-
-.detalle .info {
-    width: 50%;
-    margin-left: 1rem;
-}
-

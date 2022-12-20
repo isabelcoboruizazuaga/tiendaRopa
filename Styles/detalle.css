@@ -1,0 +1,61 @@
+/*------------PRODUCTO (DETALLE)------------*/
+main .detalle {
+    /*Posición*/
+    grid-area: 1/1/2/2;
+
+    /*Márgenes*/
+    margin: 20rem;
+    margin-top: 1rem;
+
+    /*Display*/
+    display: flex;
+
+    /*Fondo*/
+    background-color: var(--primary-color);
+}
+
+.detalle-images {
+    width: 50%;
+}
+
+.detalle img {
+    width: 90%;
+    margin: 2rem;
+}
+
+.detalle .info {
+    width: 50%;
+    margin-left: 1rem;
+}
+
+/*Botón submit*/
+main .detalle button{
+    /*Letra*/
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 120%;
+
+    /*Tamaños*/
+    height: fit-content;
+    margin-left: 5vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+
+    /*Borde*/
+    border: none;
+    border-radius: 1rem;
+
+    /*Colores*/
+    color: white;
+    background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));
+}
+
+/*Botón submit hover*/
+main .detalle button:hover{
+    background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
+    
+    /*Borde*/
+    border-radius: 1rem;
+    border: 1px solid var(--grey);
+}

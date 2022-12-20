@@ -60,7 +60,7 @@ main .carrito .container-items .item-c .adicional i{
     margin-left: 2vw;
 }
 
-main .carrito .container-items .item-c select{
+main select{
     /*Colores*/
     color: var(--terciary-color);
     background-image: linear-gradient(to right, var(--fucsia), var(--dark-blue));

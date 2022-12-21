@@ -89,3 +89,22 @@ main .registro form >input:hover{
     border-radius: 1rem;
     border: 1px solid var(--grey);
 }
+
+/*------------MEDIA QUERIES------------*/
+@media (max-width: 1064px) {
+    /*Formulario*/
+    main .registro form {
+        width: 90vw;
+    }
+    /*fieldset*/
+    main .registro fieldset{        
+        width: 85vw;
+    }
+}
+
+
+@media (max-width: 550px) {
+    main .registro input {
+        font-size:90%;
+    }
+}

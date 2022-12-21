@@ -1,4 +1,4 @@
-main .login{
+main .login {
     height: 60vh;
     /*Display*/
     display: flex;
@@ -9,15 +9,15 @@ main .login{
 }
 
 /*Formulario*/
-main .login .inicioSesionForm{
+main .login .inicioSesionForm {
     /*Tamaño*/
-    width: 30%;
+    width: 50%;
     padding: 2rem;
 
     /*Estilo*/
-    background-color:var(--primary-color);
+    background-color: var(--primary-color);
     border-radius: 2rem;
-    
+
     /*Display*/
     display: flex;
     flex-direction: column;
@@ -31,17 +31,17 @@ main .login fieldset {
 }
 
 /*Legend*/
-main .login .inicioSesionForm fieldset legend{
+main .login .inicioSesionForm fieldset legend {
     /*Centrado*/
     width: auto;
     margin-left: auto;
     margin-right: auto;
 
     font-size: 200%;
-    font-family: 'Cinzel', serif;   
+    font-family: 'Cinzel', serif;
 }
 
-main .login .inicioSesionForm fieldset div{
+main .login .inicioSesionForm fieldset div {
     display: flex;
     justify-content: space-between;
     align-content: space-between;
@@ -63,7 +63,7 @@ main .login .inicioSesionForm fieldset input {
 }
 
 /*Botón submit*/
-main .login .inicioSesionForm > input {
+main .login .inicioSesionForm>input {
     /*Letra*/
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 120%;
@@ -87,10 +87,24 @@ main .login .inicioSesionForm > input {
 }
 
 /*Botón submit hover*/
-main .login .inicioSesionForm >input:hover{
+main .login .inicioSesionForm>input:hover {
     background-image: linear-gradient(to left, var(--fucsia), var(--dark-blue));
-    
+
     /*Borde*/
     border-radius: 1rem;
     border: 1px solid var(--grey);
+}
+
+/*------------MEDIA QUERIES------------*/
+@media (max-width: 1000px) {
+    main .login .inicioSesionForm {
+        /*Formulario*/
+        width: 90%;
+    }
+}
+
+@media (max-width: 550px) {
+    main .login .inicioSesionForm fieldset input {
+        font-size: 90%;
+    }
 }

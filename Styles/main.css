@@ -61,6 +61,7 @@ body {
     grid-template-rows: 17rem fit-content(100%) fit-content(10rem);
     grid-column-gap: 0px;
     grid-row-gap: 5px;
+    overflow-x: hidden;
 }
 
 /*------------MAIN------------*/

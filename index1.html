@@ -14,27 +14,29 @@
 <body class="parent">
     <header>
         <div class="identificacion">
-            <img src="imgs/logo.jpg" alt="tienda Isa" class="imgLogo">
+            <div id="divLogo">
+                <img src="imgs/logoTI.png" alt="tienda Isa" class="imgLogo">
+                <i class="logo">TIENDA ISA</i>
+            </div>
             <div class="enlaces">
                 <p id="iniciarSesion">Inicio sesión</p>
                 <p id="registrarse">Registro</p>
-                <p id="cerrarSesion">Cerrar Sesión</p>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-shopping" id="carro"></i>
             </div>
         </div>
         <nav>
             <ul>
                 <li>
-                    <button class="art-all">Catálogo</button>
+                    <p class="art-all">Catálogo</p>
                 </li>
                 <li>
-                    <button class="art-mujer">Mujer</button>
+                    <p class="art-mujer">Mujer</p>
                 </li>
                 <li>
-                    <button class="art-hombre">Hombre</button>
+                    <p class="art-hombre">Hombre</p>
                 </li>
                 <li>
-                    <button class="art-jewele">Joyería</button>
+                    <p class="art-jewele">Joyería</p>
                 </li>
             </ul>
         </nav>
@@ -44,51 +46,72 @@
             <section id="hero">
                 <div class="hero_content">
                     <h1 class="hero_content--title">Tienda isa</h1>
-                    <p class=" hero_content--para">Ropa para todos, estilosa y a buen precio </p>
+                    <p class="hero_content--para">Dile adiós al “no tengo que ponerme", con nuestro extenso catálago tu
+                        armario no podrá estar más lleno</p>
                     <a href="#">Catálogo</a>
                 </div>
             </section>
             <section id="eslogan">
-                <p>Eslogan de la página web, es un eslogan tan genial que no quieres dejar de verlo</p>
+                <h1>Elige tu ropa, vive tu estilo</h1>
             </section>
             <section id="carrusel">
                 <h1 class="carrusel-title">Artículos destacados</h1>
-                <div class="imgs-carrusel">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
-                    <img alt="Artículo de ropa" src="#">
+                <div class="container">
+                    <input type="radio" name="slider" id="item-1">
+                    <input type="radio" name="slider" id="item-2">
+                    <input type="radio" name="slider" id="item-3">
+                    <input type="radio" name="slider" id="item-4" checked>
+                    <input type="radio" name="slider" id="item-5">
+                    <div class="cards">
+                        <label class="card" for="item-1" id="it-1">
+                            <img src="imgs/ropa1.png" alt="prenda de ropa">
+                        </label>
+                        <label class="card" for="item-2" id="it-2">
+                            <img src="imgs/ropa2.png" alt="prenda de ropa">
+                        </label>
+                        <label class="card" for="item-3" id="it-3">
+                            <img src="imgs/ropa3.png" alt="prenda de ropa">
+                        </label>
+                        <label class="card" for="item-4" id="it-4">
+                            <img src="imgs/ropa4.png" alt="prenda de ropa">
+                        </label>
+                        <label class="card" for="item-5" id="it-5">
+                            <img src="imgs/ropa5.png" alt="prenda de ropa">
+                        </label>
+                    </div>
+                </div>
                 </div>
             </section>
             <section id="siguenos">
                 <h1>Síguenos</h1>
-                <div class="imgs-siguenos">
-                    <img alt="Tienda de ropa" src="#">
-                </div>
-                <div>
-                    <p>En tienda Isa trabajamos duro para satisfacer al cliente, síguenos en nuestras redes sociales
-                        para
-                        mantenerte al día de las ofertas y novedades</p>
-                    <div class="redes-sociales">
-                        <i class="fa-brands fa-youtube"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-brands fa-facebook"></i>
+                <div class="content">
+                    <div class="imgs-siguenos">
+                        <img alt="Tienda de ropa" src="imgs/chica1.jpg">
+                        <img alt="Tienda de ropa" src="imgs/chica2.jpg">
+                        <img alt="Tienda de ropa" src="imgs/chico1.jpg">
+                    </div>
+                    <div class="informacion">
+                        <p>En tienda Isa trabajamos duro para satisfacer al cliente, síguenos en nuestras redes sociales
+                            para
+                            mantenerte al día de las ofertas y novedades</p>
+                        <div class="redes-sociales">
+                            <i class="fa-brands fa-youtube"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-facebook"></i>
+                        </div>
                     </div>
                 </div>
             </section>
             <section id="recibe-ofertas">
                 <h1>Recibe ofertas</h1>
                 <form>
-                    <label for="correo">Correo electrónico:</label>
-                    <input type="email" id="correo">
-                    <input type="submit">
+                    <input type="email" id="correo" placeholder="Correo electrónico">
+                    <input type="submit" value="Subscribirme" id="subscribe">
                 </form>
             </section>
         </section>-->
+        
         <!--<section class="catalogo">
             <div class="control">
                 <button class="ascendente">Ascendente</button>
@@ -117,6 +140,7 @@
                 </div>
             </div>
         </section>-->
+        
         <!--<section class="detalle">
             <div class="detalle-images">
                 <img src="imgs/prueba.jpg" alt="producto">
@@ -136,6 +160,7 @@
                 <button>Añadir al carrito</button>
             </div>
         </section>-->
+       
         <!--<section class="carrito">
             <h1 class="title">Cesta</h1>
             <div class="container-items">
@@ -215,6 +240,7 @@
                 <button id="pagar">Pasar por caja</button>
             </div>
         </section>-->
+        
         <!--<section class="registro">
         <form>
                 <fieldset>
@@ -269,7 +295,8 @@
                 <input type="submit" value="Registrarme">
             </form>
         </section>-->
-        <section class="login">
+        
+        <!--<section class="login">
             <form class="inicioSesionForm">
                 <fieldset>
                     <legend>Inicia sesión</legend>
@@ -285,7 +312,7 @@
                 <input type="submit" value="Iniciar Sesión">      
                 <p>El usuario o contraseña no son correctos </p>
             </form>
-        </section>
+        </section>-->
     </main>
     <footer>
         <section id="ayuda">
